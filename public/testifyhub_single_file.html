@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TestifyHub | Christian Online Radio &amp; Testimony Community</title>
+  <meta name="description" content="TestifyHub - 24/7 Christian Online Radio, stories of faith and answered prayers, daily Bible devotionals, and prayer intercession community.">
+  
+  <!-- Roboto Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN for Standalone Portability -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Roboto', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              green: '#025735',
+              'green-dark': '#014026',
+              'green-light': '#E6F4EE',
+              purple: '#591C99',
+              'purple-dark': '#451379',
+              'purple-light': '#F3EBFA',
+              gold: '#F2B83D',
+              'gold-dark': '#D99C1E',
+              'gold-light': '#FEF8EB',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #F8FAF8;
+      color: #1E2922;
+      margin: 0;
+      padding: 0;
+    }
+    
+    @keyframes soundwave-1 { 0%, 100% { height: 6px; } 50% { height: 28px; } }
+    @keyframes soundwave-2 { 0%, 100% { height: 16px; } 50% { height: 36px; } }
+    @keyframes soundwave-3 { 0%, 100% { height: 24px; } 50% { height: 10px; } }
+    @keyframes soundwave-4 { 0%, 100% { height: 10px; } 50% { height: 32px; } }
+    @keyframes soundwave-5 { 0%, 100% { height: 20px; } 50% { height: 8px; } }
+    @keyframes soundwave-6 { 0%, 100% { height: 14px; } 50% { height: 30px; } }
+    @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes pulse-ring { 0% { transform: scale(0.95); opacity: 0.8; } 50% { transform: scale(1.15); opacity: 0.2; } 100% { transform: scale(0.95); opacity: 0.8; } }
+
+    .anim-spin-slow { animation: spin-slow 14s linear infinite; }
+    .anim-pulse-ring { animation: pulse-ring 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    .sw-1 { animation: soundwave-1 0.7s infinite; }
+    .sw-2 { animation: soundwave-2 0.9s infinite; }
+    .sw-3 { animation: soundwave-3 0.6s infinite; }
+    .sw-4 { animation: soundwave-4 0.8s infinite; }
+    .sw-5 { animation: soundwave-5 0.65s infinite; }
+    .sw-6 { animation: soundwave-6 0.75s infinite; }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #F0F5F2; }
+    ::-webkit-scrollbar-thumb { background: #C3D4C9; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #9AB3A3; }
+  </style>
+</head>
+<body class="antialiased selection:bg-[#F2B83D] selection:text-[#025735]">
+
+  <!-- Audio Element -->
+  <audio id="globalAudioPlayer" preload="none"></audio>
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#E3ECE6] shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between gap-6 h-20">
+        
+        <!-- Brand Wordmark & Official Logo -->
+        <a href="#live-radio" class="flex items-center gap-3">
+          <div class="h-12 w-12 sm:h-14 sm:w-14 rounded-xl overflow-hidden bg-white border border-[#E3ECE6] flex items-center justify-center p-0.5 shadow-xs">
+            <img src="https://news.hii5media.com/wp-content/uploads/2026/10/4b048e13-5464-42ca-9ae2-f29294d1964e.jpeg" alt="TestifyHub Logo" class="w-full h-full object-contain">
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="text-xl sm:text-2xl font-bold tracking-tight text-[#025735] leading-none">
+                Testify<span class="text-[#591C99]">Hub</span>
+              </span>
+              <span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 bg-[#FEF8EB] text-[#D99C1E] border border-[#F2B83D]/40 rounded">
+                Radio
+              </span>
+            </div>
+            <span class="text-[11px] text-[#526057] block mt-1 tracking-wide">
+              Stories of Grace · 24/7 Christian Broadcast
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-7 text-[14px] font-medium text-[#2F3D34]">
+          <a href="#live-radio" class="hover:text-[#025735] transition-colors py-1">Listen Live</a>
+          <a href="#testimonies-hub" class="hover:text-[#025735] transition-colors py-1">Testimonies</a>
+          <a href="#prayer-wall" class="hover:text-[#025735] transition-colors py-1">Prayer Wall</a>
+          <a href="#devotional" class="hover:text-[#025735] transition-colors py-1">Daily Devotional</a>
+          <a href="#articles" class="hover:text-[#025735] transition-colors py-1">Articles</a>
+          <a href="#family-hub" class="hover:text-[#025735] transition-colors py-1">Family &amp; Youth</a>
+          <a href="#giving" class="hover:text-[#025735] transition-colors py-1">Partner</a>
+        </nav>
+
+        <!-- Right Utilities & Audio Trigger -->
+        <div class="flex items-center gap-3">
+          <button id="navPlayBtn" onclick="togglePlayPause()" class="px-4 py-2 text-xs font-semibold rounded-lg transition-all flex items-center gap-2 shadow-xs bg-[#591C99] text-white hover:bg-[#451379] cursor-pointer">
+            <span id="navPlayText">Listen Live</span>
+          </button>
+          
+          <button onclick="openDonateModal()" class="hidden sm:inline-flex px-3.5 py-2 text-xs font-medium text-[#025735] bg-[#E6F4EE] hover:bg-[#d8ecdf] rounded-lg border border-[#025735]/20 cursor-pointer">
+            Partner
+          </button>
+
+          <button onclick="openAdminModal()" class="p-2 text-[#526057] hover:text-[#025735] hover:bg-[#F0F5F2] rounded-lg transition-colors cursor-pointer" title="Admin Portal">
+            ⚙
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="live-radio" class="relative pt-6 pb-14 lg:pt-10 lg:pb-20 overflow-hidden bg-gradient-to-b from-[#F2F7F4] via-[#F8FAF8] to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Trust Ribbon -->
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-8 pb-3 border-b border-[#E3ECE6] text-xs text-[#526057]">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#E6F4EE] text-[#025735] font-semibold text-[11px]">
+            <span class="w-2 h-2 rounded-full bg-[#025735] animate-pulse"></span>
+            24/7 Global Radio
+          </span>
+          <span class="text-[#C7D6CD]">·</span>
+          <span class="font-medium text-[#2F3D34]">High-Fidelity Audio Broadcast</span>
+          <span class="text-[#C7D6CD]">·</span>
+          <span>Worldwide Ministry Outreach</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        
+        <!-- Left Story (6 cols) -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="flex items-center gap-4">
+            <div class="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl bg-white border-2 border-[#E3ECE6] p-1 shadow-sm flex items-center justify-center shrink-0">
+              <img src="https://news.hii5media.com/wp-content/uploads/2026/10/4b048e13-5464-42ca-9ae2-f29294d1964e.jpeg" alt="TestifyHub Brand Logo" class="w-full h-full object-contain">
+            </div>
+            <div>
+              <span class="text-xs uppercase font-bold tracking-widest text-[#591C99] block">
+                Christian Digital Media Platform
+              </span>
+              <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#025735] tracking-tight leading-tight">
+                Testify<span class="text-[#591C99]">Hub</span> Radio
+              </h1>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <p class="text-lg sm:text-xl font-medium text-[#2F3D34] leading-snug">
+              Where every voice becomes a testimony of grace, every prayer finds an altar, and families are built upon God's enduring Word.
+            </p>
+            
+            <blockquote class="p-3.5 bg-[#FEF8EB] border-l-4 border-[#F2B83D] rounded-r-lg text-xs sm:text-sm text-[#7D5300] italic leading-relaxed">
+              "And they overcame him by the blood of the Lamb and by the word of their testimony..."
+              <span class="block not-italic font-bold text-[#A66F00] mt-1">- Revelation 12:11</span>
+            </blockquote>
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <button onclick="togglePlayPause()" class="px-6 py-3.5 bg-[#025735] hover:bg-[#014026] text-white rounded-xl text-sm font-bold transition-all shadow-md hover:shadow-lg flex items-center gap-2.5 active:scale-95 cursor-pointer">
+              <span id="heroPlayIcon">▶</span>
+              <span id="heroPlayText">Tune In Live (24/7)</span>
+            </button>
+
+            <button onclick="openSubmitModal('testimony')" class="px-5 py-3.5 bg-white hover:bg-[#F0F5F2] text-[#591C99] border-2 border-[#591C99]/30 hover:border-[#591C99] rounded-xl text-sm font-semibold transition-all shadow-xs cursor-pointer">
+              Share a Testimony
+            </button>
+
+            <button onclick="openSubmitModal('prayer')" class="px-4 py-3.5 text-xs text-[#2F3D34] hover:text-[#025735] font-semibold underline underline-offset-4 cursor-pointer">
+              Submit Prayer Request →
+            </button>
+          </div>
+
+          <div class="grid grid-cols-3 gap-3 pt-4 border-t border-[#E3ECE6]">
+            <div class="bg-white p-3 rounded-xl border border-[#E3ECE6] shadow-2xs">
+              <span class="text-[11px] text-[#526057] block font-medium">Global Stream</span>
+              <span class="text-base sm:text-lg font-bold text-[#025735]">24/7 Live</span>
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-[#E3ECE6] shadow-2xs">
+              <span class="text-[11px] text-[#526057] block font-medium">Answered Prayers</span>
+              <span class="text-base sm:text-lg font-bold text-[#591C99]" id="testimonyCountBadge">1,280+ Reports</span>
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-[#E3ECE6] shadow-2xs">
+              <span class="text-[11px] text-[#526057] block font-medium">Intercessors</span>
+              <span class="text-base sm:text-lg font-bold text-[#D99C1E]">48 Countries</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Player Card (6 cols) -->
+        <div class="lg:col-span-6">
+          <div class="relative bg-white rounded-3xl p-6 sm:p-8 border-2 border-[#E3ECE6] shadow-xl overflow-hidden">
+            <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#025735] via-[#591C99] to-[#F2B83D]"></div>
+
+            <div class="flex items-center justify-between mb-6">
+              <div class="flex items-center gap-2">
+                <div class="relative flex items-center justify-center">
+                  <span class="w-3 h-3 rounded-full bg-[#025735]"></span>
+                  <span id="beaconPulse" class="absolute w-5 h-5 rounded-full bg-[#025735]/40 anim-pulse-ring hidden"></span>
+                </div>
+                <span id="playerBadgeText" class="text-xs font-bold uppercase tracking-wider text-[#025735]">
+                  TestifyHub Radio 24/7
+                </span>
+              </div>
+              <span class="text-xs font-medium text-[#526057] px-2.5 py-1 bg-[#F0F5F2] rounded-full border border-[#E3ECE6]">
+                08:00 - 10:00 GMT
+              </span>
+            </div>
+
+            <!-- Central Vinyl & Animated Waveform -->
+            <div class="flex flex-col sm:flex-row items-center gap-6 my-6 p-4 sm:p-6 bg-gradient-to-br from-[#F2F7F4] to-[#F8FAF8] rounded-2xl border border-[#E3ECE6]">
+              <div class="relative shrink-0 flex items-center justify-center">
+                <div id="vinylDisc" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-[#1A1A1A] border-4 border-[#333333] shadow-lg flex items-center justify-center relative">
+                  <div class="absolute inset-2 rounded-full border border-[#2D2D2D]"></div>
+                  <div class="absolute inset-4 rounded-full border border-[#262626]"></div>
+                  <div class="w-12 h-12 rounded-full bg-white border-2 border-[#F2B83D] flex items-center justify-center overflow-hidden p-0.5">
+                    <img src="https://news.hii5media.com/wp-content/uploads/2026/10/4b048e13-5464-42ca-9ae2-f29294d1964e.jpeg" alt="Emblem" class="w-full h-full object-contain">
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex-1 text-center sm:text-left space-y-2">
+                <span class="text-[11px] font-bold text-[#591C99] uppercase tracking-wider block">
+                  Teaching · On Air
+                </span>
+                <h3 class="text-lg sm:text-xl font-bold text-[#1E2922]">
+                  Grace &amp; Truth Morning Broadcast
+                </h3>
+                <p class="text-xs text-[#526057]">
+                  Hosted by <strong class="text-[#1E2922]">Pastor Thomas Vance</strong>. Expository study and prayer for families.
+                </p>
+
+                <!-- Audio Equalizer Bars -->
+                <div class="pt-2 flex items-center justify-center sm:justify-start gap-1.5 h-9" id="equalizerContainer">
+                  <span class="w-1.5 rounded-full bg-[#025735] h-1.5 opacity-40 eq-bar"></span>
+                  <span class="w-1.5 rounded-full bg-[#591C99] h-1.5 opacity-40 eq-bar"></span>
+                  <span class="w-1.5 rounded-full bg-[#F2B83D] h-1.5 opacity-40 eq-bar"></span>
+                  <span class="w-1.5 rounded-full bg-[#025735] h-1.5 opacity-40 eq-bar"></span>
+                  <span class="w-1.5 rounded-full bg-[#591C99] h-1.5 opacity-40 eq-bar"></span>
+                  <span class="w-1.5 rounded-full bg-[#F2B83D] h-1.5 opacity-40 eq-bar"></span>
+                  <span class="ml-2 text-[10px] font-bold uppercase tracking-wider text-[#526057]" id="streamStatusText">Ready to Stream</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="space-y-4 pt-2">
+              <div class="flex items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                  <button onclick="togglePlayPause()" class="w-14 h-14 rounded-2xl bg-[#025735] hover:bg-[#014026] text-white flex items-center justify-center shadow-md active:scale-95 transition-all cursor-pointer text-xl font-bold">
+                    <span id="playerBtnIcon">▶</span>
+                  </button>
+                  <div>
+                    <span class="text-[11px] font-semibold text-[#526057] block">Live Audio</span>
+                    <span class="text-sm font-bold text-[#1E2922]" id="playerMainStatus">Click to Listen Live</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2 bg-[#F0F5F2] px-3 py-2 rounded-xl border border-[#E3ECE6]">
+                  <button onclick="toggleMute()" class="text-[#2F3D34] hover:text-[#025735] p-1 cursor-pointer" id="muteBtn">🔊</button>
+                  <input type="range" min="0" max="1" step="0.05" value="0.85" onchange="setVolume(this.value)" class="w-20 sm:w-24 accent-[#025735] h-1.5 bg-[#C7D6CD] rounded-lg cursor-pointer">
+                  <span class="text-[11px] font-mono text-[#526057] w-8 text-right" id="volText">85%</span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap items-center justify-between gap-3 text-xs pt-3 border-t border-[#E3ECE6] text-[#526057]">
+                <div class="flex items-center gap-1.5">
+                  <span>⏱</span>
+                  <select id="sleepTimerSelect" onchange="handleSleepTimer(this.value)" class="bg-transparent text-xs text-[#2F3D34] font-medium border-none cursor-pointer">
+                    <option value="0">Sleep Timer: Off</option>
+                    <option value="15">Sleep in 15m</option>
+                    <option value="30">Sleep in 30m</option>
+                    <option value="45">Sleep in 45m</option>
+                    <option value="60">Sleep in 60m</option>
+                  </select>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <button onclick="openScheduleModal()" class="hover:text-[#025735] font-semibold text-[#2F3D34] cursor-pointer">
+                    📅 7-Day Schedule
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES & PRAISE REPORTS SECTION -->
+  <section id="testimonies-hub" class="py-16 bg-white border-t border-[#E3ECE6]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-10 pb-6 border-b border-[#E3ECE6]">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-widest text-[#591C99] mb-1.5">
+            Stories of Answered Prayer &amp; Faithfulness
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#025735] tracking-tight">
+            Testimonies of God’s Grace
+          </h2>
+          <p class="text-[#526057] text-sm sm:text-base max-w-2xl mt-1.5 leading-relaxed">
+            Every miracle is meant to be shared. Read real accounts of how God answered prayers across our global radio family.
+          </p>
+        </div>
+
+        <button onclick="openSubmitModal('testimony')" class="px-5 py-3 bg-[#591C99] hover:bg-[#451379] text-white rounded-xl text-xs sm:text-sm font-bold transition-all shadow-sm cursor-pointer active:scale-95">
+          Submit Your Testimony
+        </button>
+      </div>
+
+      <!-- Testimonies Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="testimoniesGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- PRAYER WALL SECTION -->
+  <section id="prayer-wall" class="py-16 bg-[#F8FAF8] border-t border-[#E3ECE6]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-10 pb-6 border-b border-[#E3ECE6]">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-widest text-[#025735] mb-1.5">
+            Intercession &amp; Fellowship
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E2922] tracking-tight">
+            Community Prayer Wall
+          </h2>
+          <p class="text-[#526057] text-sm sm:text-base max-w-2xl mt-1.5 leading-relaxed">
+            "Bear one another’s burdens, and so fulfill the law of Christ." (Galatians 6:2).
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button onclick="openSubmitModal('prayer')" class="px-5 py-3 bg-[#025735] hover:bg-[#014026] text-white rounded-xl text-xs sm:text-sm font-bold transition-all shadow-xs cursor-pointer active:scale-95">
+            Submit Prayer Request
+          </button>
+          <button onclick="openSubmitModal('testimony')" class="px-5 py-3 bg-white hover:bg-[#F0F5F2] text-[#591C99] border border-[#591C99]/30 rounded-xl text-xs sm:text-sm font-semibold transition-all shadow-2xs cursor-pointer">
+            Share Praise Report
+          </button>
+        </div>
+      </div>
+
+      <!-- Prayer Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="prayersGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- DAILY DEVOTIONAL SECTION -->
+  <section id="devotional" class="py-16 bg-white border-t border-[#E3ECE6]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-[#E3ECE6]">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-widest text-[#025735]">
+            Daily Spiritual Bread
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E2922] mt-1 tracking-tight">
+            Today’s Devotional
+          </h2>
+        </div>
+
+        <button onclick="openArchiveModal()" class="px-4 py-2 text-xs font-semibold text-[#025735] bg-[#E6F4EE] hover:bg-[#d8ecdf] border border-[#025735]/30 rounded-xl transition-colors cursor-pointer">
+          Devotional Archive
+        </button>
+      </div>
+
+      <article class="bg-[#F8FAF8] rounded-3xl p-6 sm:p-10 border border-[#E3ECE6] shadow-sm space-y-6">
+        <div class="flex justify-between items-center text-xs text-[#526057] border-b border-[#E3ECE6] pb-3">
+          <span class="font-semibold text-[#1E2922]">Tuesday, October 13, 2026</span>
+          <span>By Pastor Thomas Vance</span>
+        </div>
+
+        <h3 class="text-2xl sm:text-3xl font-bold text-[#1E2922]">
+          New Mercies for Weary Mornings
+        </h3>
+
+        <div class="bg-[#FEF8EB] rounded-2xl p-6 border-l-4 border-[#F2B83D]">
+          <blockquote class="text-base sm:text-lg text-[#6A4700] italic leading-relaxed">
+            "The steadfast love of the Lord never ceases; his mercies never come to an end; they are new every morning; great is your faithfulness."
+          </blockquote>
+          <cite class="block text-xs uppercase tracking-widest font-bold text-[#A66F00] mt-3 not-italic">
+            Lamentations 3:22-23
+          </cite>
+        </div>
+
+        <div class="text-[#2F3D34] text-base leading-relaxed space-y-4">
+          <p>
+            Jeremiah penned these timeless words in the deepest valley of his life. Jerusalem had fallen, the temple lay in ruins, and sorrow felt like a heavy shroud. Yet right in the heart of his lamentation, the prophet anchors his soul on an immutable truth: God’s compassions do not expire at sunset.
+          </p>
+          <p>
+            When you wake with unresolved burdens or anxious thoughts, remember that God does not expect you to run on yesterday’s exhausted strength. His mercies are a fresh spring, bubbling up anew with the sunrise.
+          </p>
+        </div>
+
+        <div class="bg-[#E6F4EE]/60 rounded-2xl p-5 border border-[#025735]/20">
+          <h4 class="text-xs uppercase tracking-widest font-bold text-[#025735] mb-1.5">
+            Guided Prayer for Today
+          </h4>
+          <p class="text-sm italic text-[#1E2922]">
+            "Heavenly Father, thank You that Your faithfulness does not waver with my circumstances. Forgive me for holding onto yesterday’s anxiety. I receive Your fresh mercy for this day. Give me peace in my home and eyes to see Your gentle hand in every hour. In Jesus’ name, Amen."
+          </p>
+        </div>
+
+        <div class="pt-4 border-t border-[#E3ECE6] flex flex-wrap items-center justify-between gap-3 text-xs">
+          <span class="text-[#526057]">Share today’s spiritual encouragement:</span>
+          <div class="flex items-center gap-2">
+            <button onclick="shareWhatsApp()" class="px-3.5 py-2 bg-[#25D366] text-white rounded-lg font-semibold cursor-pointer">WhatsApp</button>
+            <button onclick="copyDevotionalLink()" class="px-3.5 py-2 bg-white text-[#1E2922] border border-[#E3ECE6] rounded-lg font-medium cursor-pointer">Copy Link</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CHRISTIAN ARTICLES & JOURNAL SECTION -->
+  <section id="articles" class="py-16 bg-[#F8FAF8] border-t border-[#E3ECE6]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-8 pb-4 border-b border-[#E3ECE6]">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-widest text-[#025735] mb-1.5">
+            Biblical Reflection &amp; Christian Living
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E2922] tracking-tight">
+            TestifyHub Journal &amp; Articles
+          </h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="articlesGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FAMILY & YOUTH SECTION -->
+  <section id="family-hub" class="py-16 bg-white border-t border-[#E3ECE6]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-10 pb-6 border-b border-[#E3ECE6]">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-widest text-[#025735] mb-1.5">
+            Generational Faith &amp; Discipleship
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E2922] tracking-tight">
+            Family, Youth &amp; Children’s Ministry
+          </h2>
+          <p class="text-[#526057] text-sm sm:text-base max-w-2xl mt-1.5 leading-relaxed">
+            Equipping every generation with biblical truth, joyful home worship, and resilient conviction.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="resourcesGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- GIVING & PARTNERSHIP SECTION -->
+  <section id="giving" class="py-16 bg-[#F8FAF8] border-t border-[#E3ECE6]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-10 pb-6 border-b border-[#E3ECE6]">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-widest text-[#025735] mb-1.5">
+            Biblical Stewardship &amp; Giving
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E2922] tracking-tight">
+            Support TestifyHub Ministry
+          </h2>
+          <p class="text-[#526057] text-sm sm:text-base max-w-2xl mt-1.5 leading-relaxed">
+            "Each one must give as he has decided in his heart, for God loves a cheerful giver." (2 Corinthians 9:7).
+          </p>
+        </div>
+
+        <button onclick="openDonateModal()" class="px-6 py-3.5 bg-[#025735] hover:bg-[#014026] text-white rounded-xl text-xs sm:text-sm font-bold transition-all shadow-xs cursor-pointer active:scale-95">
+          Partner with TestifyHub
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="campaignsGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0B2519] text-[#E0ECE4] pt-16 pb-24 border-t border-[#025735]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b border-[#14472F]">
+        <div class="lg:col-span-6 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="h-12 w-12 rounded-xl bg-white p-0.5 flex items-center justify-center overflow-hidden">
+              <img src="https://news.hii5media.com/wp-content/uploads/2026/10/4b048e13-5464-42ca-9ae2-f29294d1964e.jpeg" alt="TestifyHub Logo" class="w-full h-full object-contain">
+            </div>
+            <div>
+              <span class="text-2xl font-extrabold text-white block leading-none">
+                Testify<span class="text-[#F2B83D]">Hub</span>
+              </span>
+              <span class="text-[11px] text-[#A6C4B2] uppercase tracking-widest block mt-1">
+                Christian Online Radio &amp; Testimony Platform
+              </span>
+            </div>
+          </div>
+          <p class="text-[#A6C4B2] text-sm leading-relaxed max-w-lg">
+            Dedicated to proclaiming Christ, giving voice to answered prayers, and uplifting Christian families 24 hours a day worldwide.
+          </p>
+          <div class="text-xs text-[#F2B83D] italic">
+            "And they overcame him by the blood of the Lamb and by the word of their testimony..." (Revelation 12:11)
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 bg-[#0E3222] p-6 sm:p-8 rounded-2xl border border-[#14472F] space-y-4">
+          <div class="text-xs font-bold uppercase tracking-wider text-[#F2B83D]">
+            Daily Devotional &amp; Praise Reports
+          </div>
+          <h3 class="text-xl font-bold text-white">
+            Start each morning in the Word
+          </h3>
+          <p class="text-[#A6C4B2] text-xs sm:text-sm">
+            Receive our morning Scripture reflection, inspiring praise reports, and broadcast alerts.
+          </p>
+          <form onsubmit="handleSubscribe(event)" class="flex flex-col sm:flex-row gap-2">
+            <input type="email" required placeholder="Enter your email address" id="subEmail" class="px-4 py-2.5 bg-[#0B2519] border border-[#1A573A] rounded-xl text-xs text-white placeholder-[#789A84] focus:outline-none focus:ring-1 focus:ring-[#F2B83D] flex-1">
+            <button type="submit" class="px-5 py-2.5 bg-[#025735] hover:bg-[#014026] text-white rounded-xl text-xs font-bold transition-colors cursor-pointer">
+              Subscribe Free
+            </button>
+          </form>
+          <span id="subSuccess" class="text-xs text-[#F2B83D] hidden font-semibold">Thank you for subscribing!</span>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-4 text-xs text-[#789A84]">
+        <div>
+          © 2026 TestifyHub. All rights reserved. Built to serve generations for Christ.
+        </div>
+        <div class="flex items-center gap-4">
+          <button onclick="openPolicyModal('faith')" class="hover:text-white cursor-pointer">Statement of Faith</button>
+          <button onclick="openPolicyModal('privacy')" class="hover:text-white cursor-pointer">Privacy Policy</button>
+          <button onclick="openAdminModal()" class="text-[#F2B83D] font-bold cursor-pointer">Admin Portal</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PERSISTENT DOCK AUDIO BAR -->
+  <div class="fixed bottom-0 left-0 right-0 z-30 bg-[#0B2519]/95 backdrop-blur-md text-white border-t border-[#025735] py-2.5 px-4 sm:px-6 shadow-2xl">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3 min-w-0">
+        <button onclick="togglePlayPause()" class="w-10 h-10 rounded-xl bg-[#F2B83D] hover:bg-[#d99c1e] text-[#0B2519] flex items-center justify-center shrink-0 transition-transform active:scale-95 cursor-pointer font-bold" id="dockPlayBtn">
+          ▶
+        </button>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] uppercase font-bold tracking-wider text-[#F2B83D] bg-[#025735] px-1.5 py-0.5 rounded">
+              Live 24/7
+            </span>
+            <span class="text-xs font-bold text-white truncate block">
+              TestifyHub Christian Radio
+            </span>
+          </div>
+          <span class="text-[11px] text-[#A6C4B2] truncate block">
+            Grace &amp; Truth Morning Broadcast
+          </span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="#live-radio" class="text-xs font-semibold text-white px-3 py-1.5 bg-[#025735] hover:bg-[#014026] rounded-lg transition-colors">
+          Live Studio ↑
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Submit Prayer or Testimony -->
+  <div id="submitModal" class="fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white border border-[#E3ECE6] rounded-3xl w-full max-w-xl overflow-hidden shadow-2xl p-6 sm:p-8 space-y-5">
+      <div class="flex justify-between items-center border-b border-[#E3ECE6] pb-4">
+        <h3 class="text-xl font-bold text-[#1E2922]" id="modalSubmitTitle">Submit Petition</h3>
+        <button onclick="closeSubmitModal()" class="text-[#8A9B90] hover:text-[#1E2922] p-1 cursor-pointer">✕</button>
+      </div>
+
+      <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-[#2F3D34] uppercase mb-1">Category</label>
+          <select id="subCategory" class="w-full px-3.5 py-2.5 bg-white border border-[#E3ECE6] rounded-xl text-xs sm:text-sm">
+            <option>Healing &amp; Health</option>
+            <option>Family &amp; Marriage</option>
+            <option>Youth &amp; Children</option>
+            <option>Spiritual Growth</option>
+            <option>Employment &amp; Provision</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-[#2F3D34] uppercase mb-1">Headline / Summary</label>
+          <input type="text" required id="subTitle" placeholder="e.g. Complete healing for my mother's surgery" class="w-full px-3.5 py-2.5 border border-[#E3ECE6] rounded-xl text-xs sm:text-sm">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-[#2F3D34] uppercase mb-1">Details &amp; Story</label>
+          <textarea rows="4" required id="subDetails" placeholder="Share your prayer need or what God has done..." class="w-full px-3.5 py-2.5 border border-[#E3ECE6] rounded-xl text-xs sm:text-sm"></textarea>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-[#2F3D34] uppercase mb-1">Your Name</label>
+            <input type="text" id="subAuthor" placeholder="First Name" class="w-full px-3 py-2 border border-[#E3ECE6] rounded-xl text-xs sm:text-sm">
+          </div>
+          <div class="flex items-center pt-5">
+            <label class="flex items-center gap-2 text-xs font-medium cursor-pointer">
+              <input type="checkbox" id="subAnon" class="rounded border-[#E3ECE6]">
+              <span>Post Anonymously</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-2 pt-2 border-t border-[#E3ECE6]">
+          <button type="button" onclick="closeSubmitModal()" class="px-4 py-2 text-xs font-semibold text-[#526057] cursor-pointer">Cancel</button>
+          <button type="submit" class="px-6 py-2.5 bg-[#025735] text-white font-bold rounded-xl text-xs cursor-pointer">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: Donate -->
+  <div id="donateModal" class="fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white border border-[#E3ECE6] rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl p-6 sm:p-8 space-y-5">
+      <div class="flex justify-between items-center border-b border-[#E3ECE6] pb-4">
+        <h3 class="text-xl font-bold text-[#1E2922]">Partner with TestifyHub</h3>
+        <button onclick="closeDonateModal()" class="text-[#8A9B90] hover:text-[#1E2922] cursor-pointer">✕</button>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-[#2F3D34] uppercase mb-1">Select Amount</label>
+          <div class="grid grid-cols-4 gap-2">
+            <button onclick="setDonationAmt(25)" class="py-2 rounded-xl text-xs font-bold border border-[#025735] bg-[#E6F4EE] text-[#025735] amt-btn">$25</button>
+            <button onclick="setDonationAmt(50)" class="py-2 rounded-xl text-xs font-bold border border-[#E3ECE6] amt-btn">$50</button>
+            <button onclick="setDonationAmt(100)" class="py-2 rounded-xl text-xs font-bold border border-[#E3ECE6] amt-btn">$100</button>
+            <button onclick="setDonationAmt(250)" class="py-2 rounded-xl text-xs font-bold border border-[#E3ECE6] amt-btn">$250</button>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-[#2F3D34] uppercase mb-1">Donor Name</label>
+          <input type="text" id="donorName" placeholder="Full Name" class="w-full px-3 py-2 border border-[#E3ECE6] rounded-xl text-xs sm:text-sm">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-[#2F3D34] uppercase mb-1">Email for Receipt</label>
+          <input type="email" id="donorEmail" placeholder="name@example.com" class="w-full px-3 py-2 border border-[#E3ECE6] rounded-xl text-xs sm:text-sm">
+        </div>
+
+        <button onclick="confirmDonation()" class="w-full py-3 bg-[#025735] hover:bg-[#014026] text-white font-bold rounded-xl text-xs sm:text-sm cursor-pointer shadow-xs">
+          Confirm Gift &amp; Generate Receipt
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Audio Player State
+    const STREAM_URL = 'http://cast5.asurahosting.com:8914/stream';
+    const PROXY_URL = '/api/radio-stream';
+    let isPlaying = false;
+    const audio = document.getElementById('globalAudioPlayer');
+    let selectedAmount = 25;
+    let modalMode = 'prayer';
+
+    // Mock Datasets
+    const TESTIMONIES = [
+      { id: '1', title: 'Completely Cancer-Free After 8 Months', story: 'In January our family requested prayer for my stage 3 lymphoma. Today my doctor gave the report: total remission! All glory to Jesus.', author: 'Brother Timothy N.', date: 'Oct 10, 2026', category: 'Healing & Health', praises: 48 },
+      { id: '2', title: 'My Daughter Returned to Faith', story: 'After 3 years of wandering, my daughter called in tears on Sunday night. She had listened to the radio broadcast and surrendered her heart back to Christ.', author: 'Grace M.', date: 'Oct 05, 2026', category: 'Youth & Children', praises: 32 },
+      { id: '3', title: 'Provision for Church Roof Repair', story: 'Our fellowship needed funds to repair storm damage. An anonymous radio listener covered the exact contractor invoice to the penny.', author: 'Kofi & Beatrice', date: 'Sep 28, 2026', category: 'Employment & Provision', praises: 27 }
+    ];
+
+    const PRAYERS = [
+      { id: '1', title: 'Healing for My Mother Martha', message: 'Starting her third cycle of chemotherapy on Thursday. Pray for peace and strength.', author: 'Sarah M.', count: 142, category: 'Healing & Health' },
+      { id: '2', title: 'Prodigal Son in College', message: 'Nineteen-year-old son away at school struggling with depression. Pray the Holy Spirit touches his heart.', author: 'A Father in Faith', count: 218, category: 'Youth & Children' },
+      { id: '3', title: 'Job Provision After Layoff', message: 'Recently laid off after 12 years with three young children. Pray for an open door of honest work.', author: 'Emmanuel K.', count: 95, category: 'Employment & Provision' }
+    ];
+
+    const ARTICLES = [
+      { id: '1', title: 'Building an Unhurried Family Altar in a Busy Home', category: 'Family', excerpt: 'How fifteen intentional minutes of Scripture reading and simple prayer around the kitchen table shapes eternal destinies.', readTime: '5 min read' },
+      { id: '2', title: 'Anchored Conviction: Standing Boldly for Christ', category: 'Youth', excerpt: 'Equipping our young people with thoughtful biblical convictions, gracious speech, and unshakable faith.', readTime: '6 min read' },
+      { id: '3', title: 'Teaching Little Hearts to Pray Before Bedtime', category: 'Children', excerpt: 'Practical ways to guide young children into heartfelt, honest conversations with their Heavenly Father.', readTime: '4 min read' }
+    ];
+
+    const RESOURCES = [
+      { title: 'The Family Altar Starter Kit', type: '4-Week Guide', desc: 'Practical dinner table readings, questions, and family prayers.' },
+      { title: 'Youth Apologetics: 10 Tough Questions', type: 'Discussion Cards', desc: 'Intellectually solid answers for students facing modern culture.' },
+      { title: 'Little Shepherds 52 Memory Verse Cards', type: 'Coloring Cards', desc: 'Weekly Scripture memory cards with character lessons for kids.' }
+    ];
+
+    const CAMPAIGNS = [
+      { title: '24/7 Digital Radio Transmitter & Outreach', raised: 38450, goal: 50000, donors: 420 },
+      { title: 'Children & Youth Bible Curriculum Fund', raised: 18200, goal: 25000, donors: 195 },
+      { title: 'Benevolence & Widows Food Relief', raised: 14100, goal: 15000, donors: 310 }
+    ];
+
+    // Initialize UI
+    function renderTestimonies() {
+      const grid = document.getElementById('testimoniesGrid');
+      grid.innerHTML = TESTIMONIES.map(t => `
+        <div class="bg-[#F8FAF8] rounded-2xl p-6 border border-[#E3ECE6] flex flex-col justify-between shadow-xs hover:border-[#025735]/40 transition-all">
+          <div class="space-y-3">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-bold text-[#025735] bg-[#E6F4EE] px-2.5 py-0.5 rounded-full text-[11px]">${t.category}</span>
+              <span class="text-[#526057] text-[11px]">${t.date}</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#1E2922]">${t.title}</h3>
+            <p class="text-sm text-[#3E4E44] italic leading-relaxed">"${t.story}"</p>
+          </div>
+          <div class="pt-6 mt-4 border-t border-[#E3ECE6] flex justify-between items-center text-xs">
+            <span class="font-bold text-[#1E2922]">${t.author}</span>
+            <button onclick="praiseTestimony('${t.id}')" class="px-3 py-1.5 bg-white text-[#7D5300] border border-[#F2B83D]/50 rounded-lg font-semibold cursor-pointer">
+              Amen (${t.praises})
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderPrayers() {
+      const grid = document.getElementById('prayersGrid');
+      grid.innerHTML = PRAYERS.map(p => `
+        <div class="bg-white rounded-2xl p-6 border border-[#E3ECE6] flex flex-col justify-between shadow-xs">
+          <div class="space-y-3">
+            <div class="flex justify-between text-xs">
+              <span class="font-bold text-[#025735] bg-[#E6F4EE] px-2.5 py-0.5 rounded-full text-[11px]">${p.category}</span>
+            </div>
+            <h3 class="text-lg font-bold text-[#1E2922]">${p.title}</h3>
+            <p class="text-xs sm:text-sm text-[#3E4E44] leading-relaxed">"${p.message}"</p>
+          </div>
+          <div class="pt-6 mt-4 border-t border-[#E3ECE6] flex justify-between items-center text-xs">
+            <span class="text-[#526057]">By ${p.author}</span>
+            <button onclick="prayFor('${p.id}')" class="px-3 py-1.5 bg-[#F0F5F2] hover:bg-[#E6F4EE] text-[#025735] rounded-xl font-semibold border border-[#E3ECE6] cursor-pointer">
+              I Prayed (${p.count})
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderArticles() {
+      const grid = document.getElementById('articlesGrid');
+      grid.innerHTML = ARTICLES.map(a => `
+        <article class="bg-[#F8FAF8] rounded-2xl border border-[#E3ECE6] p-6 flex flex-col justify-between shadow-2xs">
+          <div class="space-y-2">
+            <span class="text-[10px] font-bold uppercase text-[#025735] bg-[#E6F4EE] px-2 py-0.5 rounded-full">${a.category}</span>
+            <h3 class="text-lg font-bold text-[#1E2922] mt-2">${a.title}</h3>
+            <p class="text-xs sm:text-sm text-[#526057] line-clamp-3">${a.excerpt}</p>
+          </div>
+          <div class="pt-4 border-t border-[#E3ECE6] flex justify-between text-xs text-[#526057] mt-4">
+            <span>${a.readTime}</span>
+            <span class="font-bold text-[#025735]">Read Article →</span>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function renderResources() {
+      const grid = document.getElementById('resourcesGrid');
+      grid.innerHTML = RESOURCES.map(r => `
+        <div class="bg-[#F8FAF8] rounded-2xl p-6 border border-[#E3ECE6] flex flex-col justify-between space-y-4">
+          <div>
+            <span class="text-[11px] font-bold text-[#591C99] bg-[#F3EBFA] px-2 py-0.5 rounded-full">${r.type}</span>
+            <h3 class="text-lg font-bold text-[#1E2922] mt-2">${r.title}</h3>
+            <p class="text-xs text-[#526057] mt-1">${r.desc}</p>
+          </div>
+          <button onclick="downloadKit('${r.title}')" class="px-4 py-2 bg-[#025735] text-white rounded-xl text-xs font-bold cursor-pointer">
+            Download Toolkit (PDF)
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function renderCampaigns() {
+      const grid = document.getElementById('campaignsGrid');
+      grid.innerHTML = CAMPAIGNS.map(c => {
+        const pct = Math.round((c.raised / c.goal) * 100);
+        return `
+          <div class="bg-white rounded-3xl p-6 border border-[#E3ECE6] flex flex-col justify-between shadow-2xs space-y-4">
+            <div>
+              <h3 class="text-lg font-bold text-[#1E2922]">${c.title}</h3>
+              <div class="flex justify-between text-xs text-[#526057] mt-4 mb-1">
+                <span class="font-bold text-[#025735]">$${c.raised.toLocaleString()}</span>
+                <span>Goal: $${c.goal.toLocaleString()} (${pct}%)</span>
+              </div>
+              <div class="w-full bg-[#E3ECE6] h-2 rounded-full overflow-hidden">
+                <div class="bg-[#025735] h-full" style="width: ${pct}%"></div>
+              </div>
+            </div>
+            <button onclick="openDonateModal()" class="w-full py-2.5 bg-[#025735] text-white rounded-xl text-xs font-bold cursor-pointer">
+              Sponsor Project
+            </button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Audio Player Controls
+    function togglePlayPause() {
+      if (!isPlaying) {
+        audio.src = STREAM_URL;
+        audio.play().then(() => {
+          setAudioState(true);
+        }).catch(() => {
+          // Fallback to proxy
+          audio.src = PROXY_URL;
+          audio.play().then(() => setAudioState(true)).catch(() => {
+            alert("Audio stream connecting. Click again if blocked by browser autoplay.");
+          });
+        });
+      } else {
+        audio.pause();
+        setAudioState(false);
+      }
+    }
+
+    function setAudioState(playing) {
+      isPlaying = playing;
+      const vinyl = document.getElementById('vinylDisc');
+      const beacon = document.getElementById('beaconPulse');
+      const bars = document.querySelectorAll('.eq-bar');
+      const heroIcon = document.getElementById('heroPlayIcon');
+      const heroText = document.getElementById('heroPlayText');
+      const navText = document.getElementById('navPlayText');
+      const playerIcon = document.getElementById('playerBtnIcon');
+      const dockBtn = document.getElementById('dockPlayBtn');
+      const mainStatus = document.getElementById('playerMainStatus');
+      const streamText = document.getElementById('streamStatusText');
+
+      if (playing) {
+        vinyl.classList.add('anim-spin-slow');
+        beacon.classList.remove('hidden');
+        bars.forEach((b, i) => b.className = `w-1.5 rounded-full ${i % 2 === 0 ? 'bg-[#025735]' : 'bg-[#591C99]'} sw-${(i % 6) + 1}`);
+        heroIcon.innerText = '⏸';
+        heroText.innerText = 'Pause Broadcast';
+        navText.innerText = 'On Air Now';
+        playerIcon.innerText = '⏸';
+        dockBtn.innerText = '⏸';
+        mainStatus.innerText = 'Playing Live Broadcast';
+        streamText.innerText = 'Streaming 128 kbps';
+      } else {
+        vinyl.classList.remove('anim-spin-slow');
+        beacon.classList.add('hidden');
+        bars.forEach(b => b.className = 'w-1.5 rounded-full bg-[#025735] h-1.5 opacity-40 eq-bar');
+        heroIcon.innerText = '▶';
+        heroText.innerText = 'Tune In Live (24/7)';
+        navText.innerText = 'Listen Live';
+        playerIcon.innerText = '▶';
+        dockBtn.innerText = '▶';
+        mainStatus.innerText = 'Click to Listen Live';
+        streamText.innerText = 'Ready to Stream';
+      }
+    }
+
+    function setVolume(val) {
+      audio.volume = val;
+      document.getElementById('volText').innerText = Math.round(val * 100) + '%';
+    }
+
+    function toggleMute() {
+      audio.muted = !audio.muted;
+      document.getElementById('muteBtn').innerText = audio.muted ? '🔇' : '🔊';
+    }
+
+    function handleSleepTimer(mins) {
+      if (mins > 0) {
+        setTimeout(() => {
+          if (isPlaying) togglePlayPause();
+          alert('Sleep timer completed. Radio playback paused.');
+        }, mins * 60 * 1000);
+      }
+    }
+
+    // Modal helpers
+    function openSubmitModal(mode) {
+      modalMode = mode;
+      document.getElementById('modalSubmitTitle').innerText = mode === 'testimony' ? 'Share Your Testimony' : 'Submit Prayer Petition';
+      document.getElementById('submitModal').classList.remove('hidden');
+    }
+
+    function closeSubmitModal() {
+      document.getElementById('submitModal').classList.add('hidden');
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const title = document.getElementById('subTitle').value;
+      const details = document.getElementById('subDetails').value;
+      const author = document.getElementById('subAnon').checked ? 'Anonymous' : (document.getElementById('subAuthor').value || 'A Believer');
+      const cat = document.getElementById('subCategory').value;
+
+      if (modalMode === 'testimony') {
+        TESTIMONIES.unshift({ id: Date.now().toString(), title, story: details, author, date: 'Just now', category: cat, praises: 1 });
+        renderTestimonies();
+      } else {
+        PRAYERS.unshift({ id: Date.now().toString(), title, message: details, author, count: 1, category: cat });
+        renderPrayers();
+      }
+      closeSubmitModal();
+      alert('Your ' + modalMode + ' has been submitted with praise and prayers!');
+    }
+
+    function openDonateModal() { document.getElementById('donateModal').classList.remove('hidden'); }
+    function closeDonateModal() { document.getElementById('donateModal').classList.add('hidden'); }
+    function setDonationAmt(amt) { selectedAmount = amt; }
+    function confirmDonation() {
+      closeDonateModal();
+      alert('Thank you for partnering with TestifyHub with your gift of $' + selectedAmount + '! An official tax receipt has been emailed to you.');
+    }
+
+    function praiseTestimony(id) {
+      const item = TESTIMONIES.find(t => t.id === id);
+      if (item) { item.praises++; renderTestimonies(); }
+    }
+
+    function prayFor(id) {
+      const item = PRAYERS.find(p => p.id === id);
+      if (item) { item.count++; renderPrayers(); }
+    }
+
+    function downloadKit(title) {
+      alert('Downloading toolkit: ' + title + ' (PDF)');
+    }
+
+    function shareWhatsApp() {
+      const text = encodeURIComponent("Check out today's daily devotional on TestifyHub Christian Radio: " + window.location.href);
+      window.open('https://api.whatsapp.com/send?text=' + text, '_blank');
+    }
+
+    function copyDevotionalLink() {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Devotional link copied to clipboard!');
+    }
+
+    function handleSubscribe(e) {
+      e.preventDefault();
+      document.getElementById('subSuccess').classList.remove('hidden');
+      document.getElementById('subEmail').value = '';
+    }
+
+    function openScheduleModal() {
+      alert("TestifyHub 7-Day Live Schedule:\n\n06:00 - Dawn Intercession & Psalms\n08:00 - Grace & Truth Morning Broadcast (Pastor Thomas Vance)\n10:00 - Hymns of the Ages\n12:00 - Midday Community Prayer\n14:00 - Family Altar Hour\n16:00 - Children's Little Shepherds\n17:30 - Youth CrossFire Apologetics\n19:30 - The Pastor's Study Exegesis\n21:00 - Quiet Waters Evening Praise");
+    }
+
+    function openArchiveModal() {
+      alert("TestifyHub Historical Devotional Archive:\n\n1. Oct 13 - New Mercies for Weary Mornings (Lam. 3:22)\n2. Oct 12 - A Shelter in the Gathering Tempest (Ps. 46:1)\n3. Oct 11 - Clothed with Gentle Compassion (Col. 3:12)\n4. Oct 10 - The Peace That Surpasses Understanding (Phil. 4:6)\n5. Oct 09 - Standing Firm on the Rock of Ages (Matt. 7:24)");
+    }
+
+    function openPolicyModal(tab) {
+      alert("TestifyHub Statement of Faith & Policies:\n\n1. The Holy Scriptures are inspired and inerrant.\n2. One Triune God: Father, Son, and Holy Spirit.\n3. Salvation by grace through faith in Christ alone.\n4. Revelation 12:11 - They overcame by the blood of the Lamb and by the word of their testimony.\n\nAll confidential prayer requests are pastorally protected.");
+    }
+
+    function openAdminModal() {
+      alert("TestifyHub Administrator Portal:\n\n• Active Listeners: 1,482\n• Verified Testimonies: " + TESTIMONIES.length + "\n• Prayer Requests in Queue: " + PRAYERS.length + "\n• Live Stream Status: Online 24/7 (128 kbps)\n\nAll broadcast modules operating normally.");
+    }
+
+    // Run initial renders
+    renderTestimonies();
+    renderPrayers();
+    renderArticles();
+    renderResources();
+    renderCampaigns();
+  </script>
+</body>
+</html>

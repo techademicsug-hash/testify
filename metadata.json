@@ -1,0 +1,6 @@
+{
+  "name": "TestifyHub",
+  "description": "24/7 Christian Online Radio, stories of faith and answered prayers, daily Bible devotionals, and prayer intercession community.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

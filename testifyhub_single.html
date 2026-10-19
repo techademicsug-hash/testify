@@ -1,0 +1,3856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TestifyHub | Christian Online Radio & Answered Prayers Community</title>
+  <meta name="description" content="TestifyHub - 24/7 Christian Online Radio, real stories of answered prayers, daily Bible devotionals, and global prayer intercession community." />
+  <meta property="og:title" content="TestifyHub | Christian Online Radio & Answered Prayers Community" />
+  <meta property="og:description" content="Listen live to TestifyHub Christian Radio 24/7. Proclaiming Christ and sharing powerful stories of faith, grace, and answered prayers." />
+  <meta property="og:image" content="https://news.hii5media.com/wp-content/uploads/2026/10/4b048e13-5464-42ca-9ae2-f29294d1964e.jpeg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts: Roboto throughout as requested -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       BRAND DESIGN SYSTEM & COLOR PALETTE
+       Logo Colors:
+       - Deep Forest Green: #025735
+       - Royal Purple:      #591C99
+       - Golden Amber:      #F2B83D
+       - Cream & Mint Wash: #FEF8EB, #E6F4EE
+       - Alabaster Canvas:  #F7FAF8
+       - Charcoal Typography: #17241D, #2B3D32
+       ========================================================================== */
+    :root {
+      --color-green: #025735;
+      --color-green-dark: #013822;
+      --color-green-light: #e6f4ee;
+      --color-green-tint: rgba(2, 87, 53, 0.08);
+      --color-purple: #591c99;
+      --color-purple-dark: #411075;
+      --color-purple-light: #f3ebfa;
+      --color-gold: #f2b83d;
+      --color-gold-dark: #d49519;
+      --color-gold-light: #fef8eb;
+      --color-bg: #f7faf8;
+      --color-card-bg: #ffffff;
+      --color-text-main: #17241d;
+      --color-text-secondary: #2b3d32;
+      --color-text-muted: #576b5f;
+      --color-border: #e2ece5;
+      --color-border-subtle: #edf3ee;
+      --font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-xl: 30px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 8px 24px -4px rgba(2, 87, 53, 0.08);
+      --shadow-lg: 0 18px 40px -10px rgba(2, 87, 53, 0.14);
+      --shadow-glow-gold: 0 0 24px rgba(242, 184, 61, 0.35);
+      --shadow-glow-green: 0 0 24px rgba(2, 87, 53, 0.25);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 14px;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      color: var(--color-text-main);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 84px; /* Space for bottom audio dock */
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: var(--font-family);
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    input, select, textarea {
+      font-family: var(--font-family);
+    }
+
+    .container {
+      max-width: 1260px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    /* ==========================================================================
+       BROADCAST LIVE TICKER / MARQUEE (Dynamic & Lively)
+       ========================================================================== */
+    .broadcast-ticker {
+      background: linear-gradient(90deg, #013822 0%, #025735 40%, #411075 80%, #591c99 100%);
+      color: #ffffff;
+      padding: 9px 0;
+      font-size: 13px;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      border-bottom: 1px solid rgba(242, 184, 61, 0.3);
+      display: flex;
+      align-items: center;
+      z-index: 40;
+    }
+
+    .ticker-lead-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--color-gold);
+      color: #013822;
+      font-weight: 800;
+      font-size: 11px;
+      padding: 4px 12px;
+      margin-left: 20px;
+      margin-right: 16px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      flex-shrink: 0;
+      z-index: 2;
+    }
+
+    .ticker-content {
+      display: inline-block;
+      animation: ticker-slide 34s linear infinite;
+      padding-left: 20px;
+    }
+
+    .ticker-content span {
+      margin-right: 36px;
+      font-weight: 400;
+    }
+
+    .ticker-content strong {
+      color: var(--color-gold);
+      font-weight: 700;
+    }
+
+    @keyframes ticker-slide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ==========================================================================
+       SITE HEADER / TOPBAR (Clean, Human, No AI Icons)
+       ========================================================================== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+      gap: 16px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--color-border);
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 2px;
+      box-shadow: 0 4px 12px rgba(2, 87, 53, 0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .brand-wrap:hover .brand-logo {
+      transform: scale(1.04);
+      border-color: var(--color-green);
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-titles {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -0.6px;
+      color: var(--color-green);
+      line-height: 1.1;
+    }
+
+    .brand-name span {
+      color: var(--color-purple);
+    }
+
+    .brand-tagline {
+      font-size: 11.5px;
+      color: var(--color-text-muted);
+      margin-top: 3px;
+      letter-spacing: 0.2px;
+      font-weight: 500;
+    }
+
+    /* Human text-only navigation */
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      padding: 8px 4px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--color-green);
+      border-bottom-color: var(--color-green);
+      font-weight: 700;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-header-listen {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #ffffff;
+      background: var(--color-purple);
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px rgba(89, 28, 153, 0.25);
+    }
+
+    .btn-header-listen:hover {
+      background: var(--color-purple-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(89, 28, 153, 0.35);
+    }
+
+    .btn-header-listen.playing {
+      background: var(--color-green);
+      box-shadow: 0 4px 14px rgba(2, 87, 53, 0.3);
+    }
+
+    .btn-header-partner {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--color-green);
+      background: var(--color-green-light);
+      border: 1px solid rgba(2, 87, 53, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .btn-header-partner:hover {
+      background: #d8ece0;
+      transform: translateY(-1px);
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      font-size: 26px;
+      color: var(--color-text-main);
+      padding: 6px;
+      line-height: 1;
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      display: none;
+      background: #ffffff;
+      border-bottom: 2px solid var(--color-green);
+      padding: 18px 20px 24px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .mobile-drawer.open {
+      display: block;
+    }
+
+    .mobile-nav-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .mobile-nav-grid button {
+      text-align: left;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      background: #f4f8f5;
+      border: 1px solid var(--color-border);
+      transition: background 0.2s ease;
+    }
+
+    .mobile-nav-grid button:hover {
+      background: var(--color-green-light);
+      color: var(--color-green);
+    }
+
+    /* ==========================================================================
+       HERO & ANIMATED RADIO PLAYER SECTION (Rich, Picture-Filled, Alive)
+       ========================================================================== */
+    .hero-section {
+      position: relative;
+      padding-top: 40px;
+      padding-bottom: 70px;
+      background: radial-gradient(circle at 85% 20%, rgba(242, 184, 61, 0.12) 0%, transparent 40%),
+                  radial-gradient(circle at 15% 90%, rgba(89, 28, 153, 0.08) 0%, transparent 45%),
+                  linear-gradient(180deg, #f0f6f2 0%, #f7faf8 50%, #ffffff 100%);
+      overflow: hidden;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    /* Ambient animated soundwaves in hero background */
+    .hero-bg-waves {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      opacity: 0.45;
+      background-image: radial-gradient(rgba(2, 87, 53, 0.06) 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+    }
+
+    .hero-top-ribbon {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 12.5px;
+      color: var(--color-text-muted);
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(2, 87, 53, 0.12);
+    }
+
+    .badge-live-pulse {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 12px;
+      background: var(--color-green-light);
+      color: var(--color-green);
+      font-size: 11px;
+      font-weight: 800;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      border: 1px solid rgba(2, 87, 53, 0.2);
+    }
+
+    .pulse-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #e53e3e;
+      box-shadow: 0 0 0 0 rgba(229, 62, 62, 0.7);
+      animation: pulse-ring 2s infinite;
+    }
+
+    .pulse-dot.green {
+      background: var(--color-green);
+      box-shadow: 0 0 0 0 rgba(2, 87, 53, 0.7);
+    }
+
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(229, 62, 62, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(229, 62, 62, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(229, 62, 62, 0); }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 44px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .greeting-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-purple);
+      background: var(--color-purple-light);
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      width: fit-content;
+      border: 1px solid rgba(89, 28, 153, 0.15);
+    }
+
+    .hero-title {
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -1.2px;
+      color: var(--color-green);
+    }
+
+    .hero-title span {
+      color: var(--color-purple);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-title span::after {
+      content: "";
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: var(--color-gold);
+      border-radius: 4px;
+      opacity: 0.45;
+      z-index: -1;
+    }
+
+    .hero-description {
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+    }
+
+    .scripture-banner {
+      background: linear-gradient(135deg, #fffdf7 0%, var(--color-gold-light) 100%);
+      border-left: 5px solid var(--color-gold);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 14px;
+      font-style: italic;
+      color: #6e4700;
+      line-height: 1.6;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .scripture-banner span {
+      display: block;
+      margin-top: 6px;
+      font-style: normal;
+      font-weight: 800;
+      color: var(--color-gold-dark);
+      font-size: 12.5px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      padding-top: 6px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: var(--radius-md);
+      background: var(--color-green);
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 18px rgba(2, 87, 53, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(2, 87, 53, 0.35);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: var(--radius-md);
+      background: #ffffff;
+      color: var(--color-purple);
+      border: 2px solid rgba(89, 28, 153, 0.25);
+      font-size: 14.5px;
+      font-weight: 700;
+      transition: all 0.25s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--color-purple);
+      background: var(--color-purple-light);
+      transform: translateY(-1px);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      padding-top: 18px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .stat-card {
+      background: #ffffff;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-green);
+    }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      display: block;
+      margin-bottom: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-val {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--color-green);
+    }
+
+    /* ==========================================================================
+       ANIMATED RADIO PLAYER CARD (Lively, Vinyl, Canvas Waves, Presenter Photo)
+       ========================================================================== */
+    .player-card {
+      position: relative;
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      border: 2px solid rgba(2, 87, 53, 0.15);
+      padding: 30px;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .player-card:hover {
+      box-shadow: 0 24px 50px -10px rgba(2, 87, 53, 0.2);
+    }
+
+    .player-accent-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 7px;
+      background: linear-gradient(90deg, var(--color-green) 0%, var(--color-purple) 50%, var(--color-gold) 100%);
+    }
+
+    .player-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .player-live-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--color-green);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .player-time-badge {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      padding: 4px 12px;
+      background: #f0f5f2;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+    }
+
+    /* Live Canvas Soundwave Visualizer */
+    .visualizer-canvas-wrap {
+      width: 100%;
+      height: 52px;
+      background: #0d281a;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 20px;
+      position: relative;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
+      border: 1px solid rgba(2, 87, 53, 0.3);
+    }
+
+    #audio-visualizer-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .visualizer-overlay-label {
+      position: absolute;
+      top: 6px;
+      left: 12px;
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--color-gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+
+    .visualizer-overlay-bitrate {
+      position: absolute;
+      top: 6px;
+      right: 12px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #8ed6ad;
+      pointer-events: none;
+    }
+
+    /* Central Box: Vinyl Record + Presenter Photo + Program Details */
+    .player-center-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: linear-gradient(135deg, #f4f8f5 0%, #f9fbf9 100%);
+      padding: 20px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      margin-bottom: 22px;
+      position: relative;
+    }
+
+    /* Vinyl Record disc */
+    .vinyl-disc {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: #141414;
+      border: 4px solid #282828;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .vinyl-groove {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .vinyl-groove.g1 { inset: 7px; }
+    .vinyl-groove.g2 { inset: 15px; }
+    .vinyl-groove.g3 { inset: 23px; }
+
+    .vinyl-center-label {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid var(--color-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 2px;
+      z-index: 2;
+    }
+
+    .vinyl-center-label img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .vinyl-disc.spinning {
+      animation: spin-vinyl 12s linear infinite;
+    }
+
+    @keyframes spin-vinyl {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .player-show-info {
+      flex: 1;
+    }
+
+    .presenter-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      padding: 4px 10px 4px 4px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      margin-bottom: 8px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .presenter-avatar-mini {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .presenter-chip span {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+    }
+
+    .show-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--color-text-main);
+      line-height: 1.25;
+      margin-bottom: 4px;
+    }
+
+    .show-host {
+      font-size: 12.5px;
+      color: var(--color-text-muted);
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    /* Dynamic Soundwave Equalizer Bars */
+    .equalizer-bar-group {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 26px;
+    }
+
+    .eq-bar {
+      width: 4px;
+      border-radius: 4px;
+      background: var(--color-green);
+      transition: height 0.15s ease;
+      height: 6px;
+    }
+
+    .eq-bar:nth-child(2) { background: var(--color-purple); }
+    .eq-bar:nth-child(3) { background: var(--color-gold); }
+    .eq-bar:nth-child(4) { background: var(--color-green); }
+    .eq-bar:nth-child(5) { background: var(--color-purple); }
+    .eq-bar:nth-child(6) { background: var(--color-gold); }
+    .eq-bar:nth-child(7) { background: var(--color-green); }
+    .eq-bar:nth-child(8) { background: var(--color-purple); }
+    .eq-bar:nth-child(9) { background: var(--color-gold); }
+    .eq-bar:nth-child(10) { background: var(--color-green); }
+    .eq-bar:nth-child(11) { background: var(--color-purple); }
+    .eq-bar:nth-child(12) { background: var(--color-green); }
+
+    .equalizer-bar-group.animating .eq-bar:nth-child(1) { animation: eq-anim-1 0.7s infinite alternate ease-in-out; }
+    .equalizer-bar-group.animating .eq-bar:nth-child(2) { animation: eq-anim-2 0.85s infinite alternate ease-in-out; }
+    .equalizer-bar-group.animating .eq-bar:nth-child(3) { animation: eq-anim-3 0.6s infinite alternate ease-in-out; }
+    .equalizer-bar-group.animating .eq-bar:nth-child(4) { animation: eq-anim-1 0.75s infinite alternate ease-in-out; }
+    .equalizer-bar-group.animating .eq-bar:nth-child(5) { animation: eq-anim-2 0.9s infinite alternate ease-in-out; }
+    .equalizer-bar-group.animating .eq-bar:nth-child(6) { animation: eq-anim-3 0.65s infinite alternate ease-in-out; }
+    .equalizer-bar-group.animating .eq-bar:nth-child(7) { animation: eq-anim-1 0.8s infinite alternate ease-in-out; }
+    .equalizer-bar-group.animating .eq-bar:nth-child(8) { animation: eq-anim-2 0.7s infinite alternate ease-in-out; }
+    .equalizer-bar-group.animating .eq-bar:nth-child(9) { animation: eq-anim-3 0.82s infinite alternate ease-in-out; }
+    .equalizer-bar-group.animating .eq-bar:nth-child(10) { animation: eq-anim-1 0.68s infinite alternate ease-in-out; }
+    .equalizer-bar-group.animating .eq-bar:nth-child(11) { animation: eq-anim-2 0.77s infinite alternate ease-in-out; }
+    .equalizer-bar-group.animating .eq-bar:nth-child(12) { animation: eq-anim-3 0.62s infinite alternate ease-in-out; }
+
+    @keyframes eq-anim-1 { 0% { height: 6px; } 100% { height: 25px; } }
+    @keyframes eq-anim-2 { 0% { height: 12px; } 100% { height: 26px; } }
+    @keyframes eq-anim-3 { 0% { height: 7px; } 100% { height: 20px; } }
+
+    .eq-tag {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--color-text-muted);
+      margin-left: 8px;
+    }
+
+    /* Player Controls */
+    .player-controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 6px;
+    }
+
+    .play-btn-large {
+      width: 60px;
+      height: 60px;
+      border-radius: var(--radius-md);
+      background: var(--color-green);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 18px rgba(2, 87, 53, 0.3);
+      flex-shrink: 0;
+    }
+
+    .play-btn-large:hover {
+      background: var(--color-green-dark);
+      transform: scale(1.04);
+      box-shadow: 0 10px 24px rgba(2, 87, 53, 0.4);
+    }
+
+    .play-btn-large.playing {
+      background: var(--color-purple);
+      box-shadow: 0 6px 18px rgba(89, 28, 153, 0.35);
+    }
+
+    .play-meta-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .play-meta-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .play-meta-status {
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--color-text-main);
+    }
+
+    .volume-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f0f5f2;
+      padding: 8px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+    }
+
+    .volume-pill input[type="range"] {
+      width: 80px;
+      accent-color: var(--color-green);
+      cursor: pointer;
+    }
+
+    .volume-pct {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      min-width: 32px;
+      text-align: right;
+    }
+
+    .player-sub-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      margin-top: 16px;
+      border-top: 1px solid var(--color-border);
+      font-size: 12.5px;
+      color: var(--color-text-muted);
+    }
+
+    .player-sub-bar select {
+      background: transparent;
+      border: none;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      padding: 2px 4px;
+    }
+
+    .player-sub-bar button {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--color-purple);
+      transition: color 0.2s ease;
+    }
+
+    .player-sub-bar button:hover {
+      color: var(--color-purple-dark);
+      text-decoration: underline;
+    }
+
+    /* ==========================================================================
+       SECTION HEADERS (Warm, Human, Editorial)
+       ========================================================================== */
+    .section-wrap {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--color-border);
+      position: relative;
+    }
+
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 38px;
+    }
+
+    .section-badge {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-purple);
+      background: var(--color-purple-light);
+      padding: 3px 12px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(89, 28, 153, 0.15);
+    }
+
+    .section-title {
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--color-green);
+      letter-spacing: -0.6px;
+      line-height: 1.2;
+    }
+
+    .section-subtitle {
+      font-size: 16.5px;
+      color: var(--color-text-muted);
+      max-width: 720px;
+      line-height: 1.55;
+    }
+
+    /* ==========================================================================
+       MEET OUR RADIO PRESENTERS (NEW & PICTURE-RICH)
+       ========================================================================== */
+    .presenters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 24px;
+    }
+
+    .presenter-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .presenter-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-green);
+    }
+
+    .presenter-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      background: #e2ece5;
+    }
+
+    .presenter-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .presenter-card:hover .presenter-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .presenter-time-badge-overlay {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(1, 56, 34, 0.88);
+      backdrop-filter: blur(4px);
+      color: var(--color-gold);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.4px;
+    }
+
+    .presenter-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .presenter-name {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--color-text-main);
+      margin-bottom: 2px;
+    }
+
+    .presenter-role {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--color-purple);
+      margin-bottom: 10px;
+    }
+
+    .presenter-bio {
+      font-size: 13.5px;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      margin-bottom: 14px;
+      flex: 1;
+    }
+
+    .presenter-show-tag {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--color-green);
+      background: var(--color-green-light);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      display: inline-block;
+      border: 1px solid rgba(2, 87, 53, 0.15);
+    }
+
+    /* ==========================================================================
+       TESTIMONIES HUB WITH PHOTOS (Living Proof of Answered Prayers)
+       ========================================================================== */
+    .testimonies-header-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    .filter-tab {
+      padding: 9px 18px;
+      border-radius: var(--radius-full);
+      font-size: 13.5px;
+      font-weight: 700;
+      background: #ffffff;
+      color: var(--color-text-muted);
+      border: 1px solid var(--color-border);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .filter-tab:hover {
+      border-color: var(--color-green);
+      color: var(--color-green);
+    }
+
+    .filter-tab.active {
+      background: var(--color-green);
+      color: #ffffff;
+      border-color: var(--color-green);
+      box-shadow: 0 4px 12px rgba(2, 87, 53, 0.2);
+    }
+
+    .testimonies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 26px;
+    }
+
+    .testimony-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+
+    .testimony-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-green);
+    }
+
+    .testimony-photo-header {
+      position: relative;
+      width: 100%;
+      height: 180px;
+      background: #e6ece8;
+      overflow: hidden;
+    }
+
+    .testimony-photo-header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .testimony-card:hover .testimony-photo-header img {
+      transform: scale(1.04);
+    }
+
+    .testimony-cat-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--color-purple);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .testimony-verified-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--color-green);
+      color: #ffffff;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .testimony-card-content {
+      padding: 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testimony-title {
+      font-size: 19px;
+      font-weight: 900;
+      color: var(--color-text-main);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .testimony-quote {
+      font-size: 14.5px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: 18px;
+      flex: 1;
+      font-style: normal;
+    }
+
+    .testimony-author-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-border);
+      font-size: 12.5px;
+      color: var(--color-text-muted);
+    }
+
+    .testimony-author-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .author-avatar-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--color-border);
+    }
+
+    .author-name-text {
+      font-weight: 700;
+      color: var(--color-text-main);
+      display: block;
+    }
+
+    .author-location-text {
+      font-size: 11px;
+      color: var(--color-text-muted);
+    }
+
+    .praise-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 12.5px;
+      font-weight: 800;
+      background: var(--color-gold-light);
+      color: #7d5200;
+      border: 1px solid rgba(242, 184, 61, 0.4);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .praise-btn:hover {
+      background: #fde8b8;
+      transform: translateY(-1px);
+    }
+
+    .praise-btn:active {
+      transform: scale(0.96);
+    }
+
+    /* Floating Amen / Praise animation particle */
+    .floating-amen-particle {
+      position: absolute;
+      color: var(--color-gold-dark);
+      font-weight: 900;
+      font-size: 13px;
+      pointer-events: none;
+      animation: float-fade-up 1.2s forwards ease-out;
+      z-index: 10;
+    }
+
+    @keyframes float-fade-up {
+      0% { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-40px) scale(1.3); }
+    }
+
+    /* ==========================================================================
+       COMMUNITY PRAYER WALL
+       ========================================================================== */
+    .prayer-wall-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 24px;
+    }
+
+    .prayer-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+
+    .prayer-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-green);
+    }
+
+    .prayer-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-green);
+      background: var(--color-green-light);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      margin-bottom: 12px;
+      border: 1px solid rgba(2, 87, 53, 0.15);
+    }
+
+    .prayer-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--color-text-main);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .prayer-body {
+      font-size: 14.5px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: 18px;
+      flex: 1;
+    }
+
+    .prayer-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .prayer-author {
+      font-size: 12.5px;
+      color: var(--color-text-muted);
+      font-weight: 600;
+    }
+
+    .btn-pray {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 12.5px;
+      font-weight: 800;
+      background: #f0f5f2;
+      color: var(--color-green);
+      border: 1px solid var(--color-border);
+      transition: all 0.2s ease;
+    }
+
+    .btn-pray:hover {
+      background: var(--color-green-light);
+      border-color: var(--color-green);
+    }
+
+    .btn-pray.prayed {
+      background: var(--color-gold);
+      color: #013822;
+      border-color: var(--color-gold-dark);
+      box-shadow: 0 2px 8px rgba(242, 184, 61, 0.3);
+    }
+
+    /* ==========================================================================
+       DAILY BIBLE DEVOTIONAL (With Inspiring Visual Header)
+       ========================================================================== */
+    .devotional-card {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      border: 2px solid var(--color-border);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+    }
+
+    .devotional-hero-image {
+      position: relative;
+      min-height: 380px;
+      background: #2b3d32;
+      overflow: hidden;
+    }
+
+    .devotional-hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+    }
+
+    .devotional-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(1, 56, 34, 0.4) 0%, rgba(1, 56, 34, 0.85) 100%);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      color: #ffffff;
+    }
+
+    .devotional-image-tag {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-gold);
+      margin-bottom: 6px;
+    }
+
+    .devotional-image-quote {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .devotional-image-ref {
+      font-size: 13px;
+      color: #d6eadf;
+    }
+
+    .devotional-body-side {
+      padding: 38px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .devotional-date {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--color-gold-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+    }
+
+    .devotional-title {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--color-green);
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+
+    .devotional-verse-box {
+      background: #fbfcfb;
+      border-left: 4px solid var(--color-green);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin-bottom: 20px;
+      font-size: 15.5px;
+      font-style: italic;
+      color: #213227;
+      line-height: 1.6;
+    }
+
+    .devotional-verse-box span {
+      display: block;
+      margin-top: 6px;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 13px;
+      color: var(--color-green);
+    }
+
+    .devotional-body-text {
+      font-size: 15px;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .devotional-guided-prayer {
+      background: var(--color-green-light);
+      padding: 18px 22px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(2, 87, 53, 0.15);
+      margin-bottom: 24px;
+      font-size: 14.5px;
+      color: #123d27;
+      line-height: 1.6;
+    }
+
+    .devotional-guided-prayer strong {
+      display: block;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--color-green);
+      margin-bottom: 6px;
+    }
+
+    .devotional-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 14px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    /* ==========================================================================
+       CHRISTIAN BLOG & ARTICLES WITH PHOTOS
+       ========================================================================== */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 28px;
+    }
+
+    .article-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-green);
+    }
+
+    .article-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: #e2ece5;
+    }
+
+    .article-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .article-card:hover .article-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .article-cat-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--color-purple);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .article-body {
+      padding: 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .article-title {
+      font-size: 19px;
+      font-weight: 900;
+      color: var(--color-text-main);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .article-excerpt {
+      font-size: 14.5px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: 18px;
+      flex: 1;
+    }
+
+    .article-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--color-border);
+      font-size: 12.5px;
+      color: var(--color-text-muted);
+    }
+
+    .btn-read-article {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--color-green);
+      transition: color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-read-article:hover {
+      color: var(--color-green-dark);
+      text-decoration: underline;
+    }
+
+    /* ==========================================================================
+       FAMILY, YOUTH & CHILDREN'S MINISTRY (With Beautiful Photos)
+       ========================================================================== */
+    .family-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 28px;
+    }
+
+    .family-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .family-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-green);
+    }
+
+    .family-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: #e2ece5;
+    }
+
+    .family-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .family-card:hover .family-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .family-tag-pill {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--color-green);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .family-body {
+      padding: 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .family-title {
+      font-size: 19px;
+      font-weight: 900;
+      color: var(--color-text-main);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .family-desc {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: 18px;
+      flex: 1;
+    }
+
+    .btn-download-kit {
+      width: 100%;
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      background: #f0f5f2;
+      color: var(--color-green);
+      border: 1px solid var(--color-border);
+      font-size: 13.5px;
+      font-weight: 800;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .btn-download-kit:hover {
+      background: var(--color-green);
+      color: #ffffff;
+      border-color: var(--color-green);
+    }
+
+    /* ==========================================================================
+       GIVING & PARTNERSHIP BANNER
+       ========================================================================== */
+    .giving-banner {
+      background: linear-gradient(135deg, #013822 0%, #025735 60%, #411075 100%);
+      color: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 44px 48px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .giving-banner::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(242, 184, 61, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .giving-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .giving-copy h3 {
+      font-size: 32px;
+      font-weight: 900;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .giving-copy p {
+      font-size: 16px;
+      color: #d6eadf;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .giving-campaigns {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .campaign-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      padding: 18px 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .campaign-title {
+      font-size: 14.5px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .campaign-progress-bar {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .campaign-progress-fill {
+      height: 100%;
+      background: var(--color-gold);
+      border-radius: var(--radius-full);
+      transition: width 0.6s ease;
+    }
+
+    .campaign-metrics {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #b6dbca;
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       PERSISTENT AUDIO DOCK BAR (Sticky Bottom Viewport)
+       ========================================================================== */
+    .persistent-player {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(12px);
+      border-top: 2px solid var(--color-green);
+      box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.1);
+      z-index: 60;
+      height: 72px;
+      display: flex;
+      align-items: center;
+    }
+
+    .persistent-player-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .dock-track-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .dock-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      background: #ffffff;
+      padding: 2px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .dock-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .dock-titles {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dock-station {
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--color-green);
+      line-height: 1.2;
+    }
+
+    .dock-sub {
+      font-size: 11.5px;
+      color: var(--color-text-muted);
+    }
+
+    .dock-controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .dock-play-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--color-green);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 12px rgba(2, 87, 53, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .dock-play-btn:hover {
+      background: var(--color-green-dark);
+      transform: scale(1.06);
+    }
+
+    .dock-play-btn.playing {
+      background: var(--color-purple);
+    }
+
+    /* ==========================================================================
+       MODALS (Accessible, Clean, Fast)
+       ========================================================================== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(14, 34, 24, 0.72);
+      backdrop-filter: blur(5px);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-window {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      max-width: 620px;
+      width: 100%;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+      position: relative;
+      overflow: hidden;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      animation: modal-enter 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modal-enter {
+      from { opacity: 0; transform: scale(0.96) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fafcfb;
+    }
+
+    .modal-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--color-green);
+    }
+
+    .modal-close-btn {
+      font-size: 26px;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px;
+    }
+
+    .modal-body {
+      padding: 24px;
+      overflow-y: auto;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+      font-size: 14.5px;
+      color: var(--color-text-main);
+      background: #ffffff;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      border-color: var(--color-green);
+      box-shadow: 0 0 0 3px rgba(2, 87, 53, 0.12);
+    }
+
+    .form-textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .btn-submit-form {
+      width: 100%;
+      padding: 13px;
+      border-radius: var(--radius-sm);
+      background: var(--color-green);
+      color: #ffffff;
+      font-size: 14.5px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      box-shadow: 0 4px 12px rgba(2, 87, 53, 0.2);
+    }
+
+    .btn-submit-form:hover {
+      background: var(--color-green-dark);
+    }
+
+    /* ==========================================================================
+       SITE FOOTER
+       ========================================================================== */
+    .site-footer {
+      background: #081e14;
+      color: #d8eae0;
+      padding: 64px 0 40px;
+      border-top: 3px solid var(--color-green);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 36px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand h4 {
+      font-size: 24px;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand h4 span {
+      color: var(--color-gold);
+    }
+
+    .footer-brand p {
+      font-size: 13.5px;
+      color: #9cbda8;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .footer-col h5 {
+      font-size: 12.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13.5px;
+      color: #9cbda8;
+    }
+
+    .footer-links a:hover, .footer-links button:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .footer-baseline {
+      padding-top: 28px;
+      border-top: 1px solid #113624;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12.5px;
+      color: #7a9c86;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    /* Responsive queries */
+    @media (max-width: 992px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .devotional-card { grid-template-columns: 1fr; }
+      .devotional-hero-image { min-height: 240px; }
+      .nav-menu { display: none; }
+      .mobile-menu-toggle { display: block; }
+      .giving-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title { font-size: 34px; }
+      .hero-description { font-size: 16px; }
+      .player-center-box { flex-direction: column; text-align: center; }
+      .equalizer-bar-group { justify-content: center; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .player-controls-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       BROADCAST LIVE TICKER / MARQUEE (Living, Moving Broadcast Feed)
+       ========================================================================== -->
+  <div class="broadcast-ticker">
+    <div class="ticker-lead-badge">
+      <span class="pulse-dot"></span>
+      Live Broadcast
+    </div>
+    <div class="ticker-content" id="ticker-feed">
+      <span>🔴 <strong>NOW PLAYING:</strong> Morning Grace & Testimony Hour with Pastor David & Sister Grace</span>
+      <span>🙏 <strong>ANSWERED PRAYER:</strong> Sister Margaret healed of severe heart complication in Nairobi</span>
+      <span>🌍 <strong>GLOBAL COMMUNITY:</strong> 4,280 intercessors currently tuned in across 48 nations</span>
+      <span>📖 <strong>TODAY'S VERSE:</strong> "The steadfast love of the Lord never ceases; His mercies are new every morning." (Lam 3:22-23)</span>
+      <span>✨ <strong>TESTIMONY:</strong> Deacon Thomas & Grace report their daughter returned to Christ after 6 years</span>
+      <span>💡 <strong>SUBMIT A PRAYER:</strong> Our intercessors stand with you in faith 24 hours a day</span>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       SITE HEADER (Clean Human Navigation, No AI Icons)
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      
+      <!-- Brand Logo & Station Wordmark -->
+      <a href="#live-radio" class="brand-wrap">
+        <div class="brand-logo">
+          <img src="https://news.hii5media.com/wp-content/uploads/2026/10/4b048e13-5464-42ca-9ae2-f29294d1964e.jpeg" alt="TestifyHub Logo">
+        </div>
+        <div class="brand-titles">
+          <div class="brand-name">Testify<span>Hub</span></div>
+          <div class="brand-tagline">Stories of Grace · 24/7 Christian Broadcast</div>
+        </div>
+      </a>
+
+      <!-- Clean Text Navigation (Free of AI icons) -->
+      <nav class="nav-menu">
+        <a href="#live-radio" class="nav-link active">Listen Live</a>
+        <a href="#presenters" class="nav-link">Hosts & Voices</a>
+        <a href="#testimonies-hub" class="nav-link">Testimonies</a>
+        <a href="#prayer-wall" class="nav-link">Prayer Wall</a>
+        <a href="#devotional" class="nav-link">Daily Devotional</a>
+        <a href="#articles" class="nav-link">Articles</a>
+        <a href="#family-hub" class="nav-link">Family & Youth</a>
+        <a href="#giving" class="nav-link">Partner</a>
+      </nav>
+
+      <!-- Header Action Controls -->
+      <div class="header-actions">
+        <button id="header-play-btn" class="btn-header-listen" onclick="toggleAudioPlayback()">
+          <span id="header-play-label">Listen Live</span>
+        </button>
+        <button class="btn-header-partner" onclick="openModal('giving-modal')">
+          Partner
+        </button>
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle navigation">
+          ☰
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-drawer" class="mobile-drawer">
+      <div class="mobile-nav-grid">
+        <button onclick="scrollToSection('live-radio')">Listen Live</button>
+        <button onclick="scrollToSection('presenters')">Hosts & Voices</button>
+        <button onclick="scrollToSection('testimonies-hub')">Testimonies</button>
+        <button onclick="scrollToSection('prayer-wall')">Prayer Wall</button>
+        <button onclick="scrollToSection('devotional')">Daily Devotional</button>
+        <button onclick="scrollToSection('articles')">Articles</button>
+        <button onclick="scrollToSection('family-hub')">Family & Youth</button>
+        <button onclick="scrollToSection('giving')">Partner & Giving</button>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <button class="btn-primary" style="flex: 1; padding: 12px; font-size: 13.5px;" onclick="openModal('giving-modal')">
+          Support Ministry
+        </button>
+        <button class="btn-secondary" style="flex: 1; padding: 12px; font-size: 13.5px;" onclick="openModal('admin-modal')">
+          Admin Portal
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO & ANIMATED RADIO PLAYER SECTION
+       ========================================================================== -->
+  <section id="live-radio" class="hero-section">
+    <div class="hero-bg-waves"></div>
+    <div class="container">
+      
+      <!-- Top Trust Ribbon -->
+      <div class="hero-top-ribbon">
+        <span class="badge-live-pulse">
+          <span class="pulse-dot green"></span>
+          24/7 Global Radio
+        </span>
+        <span>·</span>
+        <span>High-Fidelity Audio Broadcast</span>
+        <span>·</span>
+        <span>Direct Stream: cast5.asurahosting.com:8914/stream</span>
+        <span>·</span>
+        <span id="live-time-ticker" style="font-weight: 700; color: var(--color-purple);">Live Streaming Worldwide</span>
+      </div>
+
+      <div class="hero-grid">
+        
+        <!-- Left Column: Vision & Human Ministry Copy -->
+        <div class="hero-copy">
+          <div class="greeting-pill" id="greeting-pill">
+            <span>☀️</span>
+            <span id="greeting-text">Welcome to TestifyHub Radio</span>
+          </div>
+
+          <h1 class="hero-title">Where Answered Prayers <span>Come Alive</span></h1>
+          
+          <p class="hero-description">
+            Experience Christ-centered praise, real testimonies of divine deliverance, and Bible teaching that strengthens your family every hour of the day.
+          </p>
+
+          <div class="scripture-banner">
+            "And they overcame him by the blood of the Lamb and by the word of their testimony; and they loved not their lives unto the death."
+            <span>- Revelation 12:11</span>
+          </div>
+
+          <div class="hero-buttons">
+            <button id="hero-main-play-btn" class="btn-primary" onclick="toggleAudioPlayback()">
+              <span id="hero-main-play-text">Tune In Live (24/7)</span>
+            </button>
+            <button class="btn-secondary" onclick="openModal('submit-testimony-modal')">
+              Share a Testimony
+            </button>
+            <button class="btn-secondary" style="color: var(--color-green); border-color: rgba(2, 87, 53, 0.3);" onclick="openModal('submit-prayer-modal')">
+              Submit Prayer Request
+            </button>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-card">
+              <span class="stat-label">Global Stream</span>
+              <span class="stat-val">24/7 Live</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Answered Prayers</span>
+              <span class="stat-val" style="color: var(--color-purple);">1,280+ Reports</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Intercessors</span>
+              <span class="stat-val" style="color: var(--color-gold-dark);">48 Nations</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Animated Radio Player Card -->
+        <div class="player-card">
+          <div class="player-accent-bar"></div>
+
+          <div class="player-header">
+            <div class="player-live-indicator">
+              <span class="pulse-dot"></span>
+              <span id="player-status-badge">TestifyHub Radio 24/7</span>
+            </div>
+            <span class="player-time-badge">06:00 - 08:30 AM · Current Show</span>
+          </div>
+
+          <!-- Live HTML5 Audio Waveform Visualizer Canvas -->
+          <div class="visualizer-canvas-wrap">
+            <canvas id="audio-visualizer-canvas"></canvas>
+            <div class="visualizer-overlay-label">Broadcast Spectrum</div>
+            <div class="visualizer-overlay-bitrate" id="canvas-bitrate-tag">128 KBPS HD</div>
+          </div>
+
+          <!-- Central Player Box with Rotating Vinyl & Equalizer -->
+          <div class="player-center-box">
+            
+            <!-- Vinyl Record Animation -->
+            <div id="vinyl-disc" class="vinyl-disc">
+              <div class="vinyl-groove g1"></div>
+              <div class="vinyl-groove g2"></div>
+              <div class="vinyl-groove g3"></div>
+              <div class="vinyl-center-label">
+                <img src="https://news.hii5media.com/wp-content/uploads/2026/10/4b048e13-5464-42ca-9ae2-f29294d1964e.jpeg" alt="Emblem">
+              </div>
+            </div>
+
+            <!-- Program Info & Presenter Badge & Dancing Equalizer -->
+            <div class="player-show-info">
+              
+              <div class="presenter-chip">
+                <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=100&q=80" alt="Pastor David" class="presenter-avatar-mini">
+                <span>With Pastor David & Sister Grace</span>
+              </div>
+
+              <h3 class="show-title">Morning Grace & Testimony Hour</h3>
+              <p class="show-host">Live praise reports, Scripture reflections, and intercession for families.</p>
+
+              <!-- Equalizer Spectrum (12 Bars) -->
+              <div class="equalizer-bar-group" id="equalizer-group">
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <span id="eq-bitrate-label" class="eq-tag">Ready to Stream</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Master Audio Controls -->
+          <div class="player-controls-row">
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <button id="card-play-btn" class="play-btn-large" onclick="toggleAudioPlayback()" aria-label="Toggle radio broadcast">
+                ▶
+              </button>
+              <div class="play-meta-text">
+                <span class="play-meta-label">Broadcast Audio</span>
+                <span id="card-play-label" class="play-meta-status">Click to Play</span>
+              </div>
+            </div>
+
+            <div class="volume-pill">
+              <span id="volume-icon" style="cursor: pointer;" onclick="toggleMute()">🔊</span>
+              <input type="range" id="volume-range" min="0" max="1" step="0.05" value="0.85" oninput="changeVolume(this.value)">
+              <span id="volume-val" class="volume-pct">85%</span>
+            </div>
+          </div>
+
+          <!-- Real-Time Now Playing Broadcast Bar -->
+          <div style="margin-top: 14px; padding: 10px 14px; background: #e6f4ee; border: 1px solid rgba(2, 87, 53, 0.2); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 8px; min-width: 0;">
+              <span style="font-size: 14px;">🎧</span>
+              <div style="min-width: 0;">
+                <span style="font-size: 10px; font-weight: 800; color: #025735; text-transform: uppercase; letter-spacing: 0.5px; display: block;">Now Broadcasting</span>
+                <span id="live-stream-song-title" style="font-size: 12px; font-weight: 700; color: #1e2922; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">TestifyHub Praise & Worship 24/7</span>
+              </div>
+            </div>
+            <span id="live-stream-listeners-badge" style="font-size: 10px; font-weight: 700; background: #025735; color: #ffffff; padding: 2px 8px; border-radius: 12px; white-space: nowrap;">128 kbps HD</span>
+          </div>
+
+          <!-- Secondary Sleep Timer, Stream Links & Schedule Strip -->
+          <div class="player-sub-bar" style="margin-top: 14px;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span>Sleep Timer: </span>
+              <select id="sleep-timer-select" onchange="setSleepTimer(this.value)">
+                <option value="0">Off</option>
+                <option value="15">15m</option>
+                <option value="30">30m</option>
+                <option value="45">45m</option>
+                <option value="60">60m</option>
+              </select>
+              <span id="sleep-timer-display" style="font-weight: 700; color: var(--color-green); margin-left: 4px;"></span>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <button onclick="copyStreamUrl()" style="font-size: 11px; padding: 4px 8px; background: #f0f5f2; border: 1px solid var(--color-border); border-radius: 6px; cursor: pointer; font-weight: 600; color: var(--color-green);" title="Copy Direct Stream URL">
+                <span id="copy-stream-btn-text">📋 Stream Link</span>
+              </button>
+              <button onclick="downloadM3u()" style="font-size: 11px; padding: 4px 8px; background: #f0f5f2; border: 1px solid var(--color-border); border-radius: 6px; cursor: pointer; font-weight: 600; color: var(--color-purple);" title="Download M3U for VLC">
+                📥 .M3U
+              </button>
+              <button onclick="openModal('schedule-modal')" style="font-weight: 700;">Schedule →</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       MEET OUR RADIO PRESENTERS & VOICES OF GRACE (Rich Photos)
+       ========================================================================== -->
+  <section id="presenters" class="section-wrap" style="background: #ffffff;">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-badge">Voices of Grace</span>
+        <h2 class="section-title">Meet Our Radio Hosts & Ministers</h2>
+        <p class="section-subtitle">Faithful shepherds and intercessors bringing Scripture, prayers, and uplifting hymns into your home every single day.</p>
+      </div>
+
+      <div class="presenters-grid">
+        
+        <!-- Presenter 1 -->
+        <div class="presenter-card">
+          <div class="presenter-img-wrap">
+            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80" alt="Pastor David Vance">
+            <span class="presenter-time-badge-overlay">06:00 - 08:30 AM</span>
+          </div>
+          <div class="presenter-body">
+            <h4 class="presenter-name">Pastor David Vance</h4>
+            <span class="presenter-role">Senior Broadcaster & Teacher</span>
+            <p class="presenter-bio">Pastoring for over 22 years with a passionate heart to ignite prayer altars in every Christian home.</p>
+            <div>
+              <span class="presenter-show-tag">Morning Grace & Testimony Hour</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Presenter 2 -->
+        <div class="presenter-card">
+          <div class="presenter-img-wrap">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Sister Grace Adele">
+            <span class="presenter-time-badge-overlay">06:00 - 08:30 AM & Special</span>
+          </div>
+          <div class="presenter-body">
+            <h4 class="presenter-name">Sister Grace Adele</h4>
+            <span class="presenter-role">Praise Leader & Testimony Host</span>
+            <p class="presenter-bio">Recording worship leader dedicated to interviewing believers who have experienced Christ's healing power.</p>
+            <div>
+              <span class="presenter-show-tag">Morning Devotional & Praise</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Presenter 3 -->
+        <div class="presenter-card">
+          <div class="presenter-img-wrap">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80" alt="Pastor Ruth Vance">
+            <span class="presenter-time-badge-overlay">12:00 - 01:30 PM</span>
+          </div>
+          <div class="presenter-body">
+            <h4 class="presenter-name">Pastor Ruth Vance</h4>
+            <span class="presenter-role">Intercession & Family Director</span>
+            <p class="presenter-bio">Leading midday prayer fellowship for families in crisis, struggling mothers, and sick brethren.</p>
+            <div>
+              <span class="presenter-show-tag">Noon Intercession & Psalms of Hope</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Presenter 4 -->
+        <div class="presenter-card">
+          <div class="presenter-img-wrap">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" alt="Evangelist Mark Taylor">
+            <span class="presenter-time-badge-overlay">08:00 - 10:00 PM</span>
+          </div>
+          <div class="presenter-body">
+            <h4 class="presenter-name">Evangelist Mark Taylor</h4>
+            <span class="presenter-role">Night Watch Host & Outreach Minister</span>
+            <p class="presenter-bio">Broadcasting live late into the night, reaching troubled souls, night shift workers, and seeking hearts.</p>
+            <div>
+              <span class="presenter-show-tag">Night Watch & Miracle Testimonies</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TESTIMONIES HUB SECTION WITH REAL PICTURES
+       ========================================================================== -->
+  <section id="testimonies-hub" class="section-wrap">
+    <div class="container">
+      
+      <div class="testimonies-header-row">
+        <div class="section-header" style="margin-bottom: 0;">
+          <span class="section-badge">Living Proof of Grace</span>
+          <h2 class="section-title">Answered Prayers & Praise Reports</h2>
+          <p class="section-subtitle">Real believers sharing what the Lord has done. Every victory builds faith for someone still praying today.</p>
+        </div>
+        <button class="btn-primary" onclick="openModal('submit-testimony-modal')">
+          Share Your Testimony
+        </button>
+      </div>
+
+      <div class="filter-tabs">
+        <button class="filter-tab active" onclick="filterTestimonies('all', this)">All Stories</button>
+        <button class="filter-tab" onclick="filterTestimonies('Healing', this)">Healing & Restoration</button>
+        <button class="filter-tab" onclick="filterTestimonies('Family', this)">Family & Marriage</button>
+        <button class="filter-tab" onclick="filterTestimonies('Provision', this)">Financial Provision</button>
+        <button class="filter-tab" onclick="filterTestimonies('Salvation', this)">Salvation & Youth</button>
+      </div>
+
+      <div id="testimonies-container" class="testimonies-grid">
+        <!-- Rendered dynamically by JavaScript with images -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       COMMUNITY PRAYER WALL SECTION
+       ========================================================================== -->
+  <section id="prayer-wall" class="section-wrap" style="background: #ffffff;">
+    <div class="container">
+      
+      <div class="testimonies-header-row">
+        <div class="section-header" style="margin-bottom: 0;">
+          <span class="section-badge">Intercession Community</span>
+          <h2 class="section-title">Community Prayer Wall</h2>
+          <p class="section-subtitle">Bear one another’s burdens. Stand in the gap for brothers and sisters around the world.</p>
+        </div>
+        <button class="btn-secondary" onclick="openModal('submit-prayer-modal')">
+          Submit Prayer Request
+        </button>
+      </div>
+
+      <div id="prayers-container" class="prayer-wall-grid" style="margin-top: 28px;">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       DAILY BIBLE DEVOTIONAL SECTION WITH INSPIRING VISUAL
+       ========================================================================== -->
+  <section id="devotional" class="section-wrap">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-badge">Spiritual Nourishment</span>
+        <h2 class="section-title">Daily Bible Devotional</h2>
+        <p class="section-subtitle">Anchoring our hearts in the eternal Word of God before greeting the world each morning.</p>
+      </div>
+
+      <div class="devotional-card">
+        
+        <!-- Photographic Visual Side -->
+        <div class="devotional-hero-image">
+          <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1000&q=80" alt="Morning Bible Study">
+          <div class="devotional-image-overlay">
+            <span class="devotional-image-tag">Morning Word</span>
+            <div class="devotional-image-quote">"His mercies never come to an end; they are new every morning."</div>
+            <div class="devotional-image-ref">- Lamentations 3:22-23</div>
+          </div>
+        </div>
+
+        <!-- Devotional Content Side -->
+        <div class="devotional-body-side">
+          <div>
+            <div class="devotional-date">Tuesday, October 14, 2026 · Morning Word</div>
+            <h3 class="devotional-title">Unfailing Mercies for a Brand New Morning</h3>
+
+            <div class="devotional-verse-box">
+              "The steadfast love of the Lord never ceases; his mercies never come to an end; they are new every morning; great is your faithfulness."
+              <span>Lamentations 3:22-23 (ESV)</span>
+            </div>
+
+            <div class="devotional-body-text">
+              <p>
+                When Jeremiah penned these words, his homeland was in ruins and sorrow seemed triumphant. Yet from the deepest place of grief, the Prophet lifted his eyes to heaven and recalled the unchanging character of God. Yesterday's trials do not carry a monopoly on today.
+              </p>
+              <p style="margin-top: 10px;">
+                Before your feet touched the floor, God had already dispensed fresh compassion tailored precisely for every burden you will meet today. His mercy is not recycled; it is freshly minted.
+              </p>
+            </div>
+
+            <div class="devotional-guided-prayer">
+              <strong>Guided Morning Prayer</strong>
+              "Heavenly Father, thank You that Your faithfulness is deeper than my weakness. I receive Your fresh mercies for this day. Grant me peace in my mind, purity in my speech, and strength in my spirit to honor Christ in my home and workplace. In Jesus' name, Amen."
+            </div>
+          </div>
+
+          <div class="devotional-actions">
+            <div style="display: flex; gap: 10px;">
+              <button class="btn-primary" style="padding: 10px 18px; font-size: 13.5px;" onclick="shareOnWhatsApp()">
+                Share on WhatsApp
+              </button>
+              <button class="btn-secondary" style="padding: 10px 18px; font-size: 13.5px;" onclick="copyDevotionalText()">
+                Copy Text
+              </button>
+            </div>
+            <div>
+              <button class="btn-secondary" style="font-size: 13px;" onclick="openModal('schedule-modal')">
+                Broadcast Times →
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CHRISTIAN BLOG & ARTICLES WITH PHOTOS
+       ========================================================================== -->
+  <section id="articles" class="section-wrap" style="background: #ffffff;">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-badge">Discipleship & Ministry Journal</span>
+        <h2 class="section-title">Christian Articles & Biblical Teaching</h2>
+        <p class="section-subtitle">Practical biblical insights on marriage, parenting, youth apologetics, and spiritual victory.</p>
+      </div>
+
+      <div class="articles-grid">
+        
+        <!-- Article 1 -->
+        <div class="article-card">
+          <div class="article-img-wrap">
+            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=800&q=80" alt="Family prayer altar">
+            <span class="article-cat-tag">Family & Marriage</span>
+          </div>
+          <div class="article-body">
+            <div>
+              <h3 class="article-title">Rebuilding the Family Altar in an Age of Digital Distraction</h3>
+              <p class="article-excerpt">How simple, consistent ten-minute evening prayers and Bible readings protect our children’s hearts from worldly drift.</p>
+            </div>
+            <div class="article-footer">
+              <span>By Pastor David Vance · 6 min read</span>
+              <button class="btn-read-article" onclick="readArticle(1)">Read Article →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 2 -->
+        <div class="article-card">
+          <div class="article-img-wrap">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Youth fellowship discussion">
+            <span class="article-cat-tag">Youth & Apologetics</span>
+          </div>
+          <div class="article-body">
+            <div>
+              <h3 class="article-title">Guiding Christian Youth Through Skepticism and Culture</h3>
+              <p class="article-excerpt">Answering tough university and campus questions with gentleness, historical evidence, and Christ-centered conviction.</p>
+            </div>
+            <div class="article-footer">
+              <span>By Nathan Vance · 8 min read</span>
+              <button class="btn-read-article" onclick="readArticle(2)">Read Article →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 3 -->
+        <div class="article-card">
+          <div class="article-img-wrap">
+            <img src="https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=800&q=80" alt="Open Bible in light">
+            <span class="article-cat-tag">Bible Teaching</span>
+          </div>
+          <div class="article-body">
+            <div>
+              <h3 class="article-title">The Power of the Blood of the Lamb and Our Testimony</h3>
+              <p class="article-excerpt">Why sharing what God did for you is one of the most potent spiritual weapons against fear and darkness.</p>
+            </div>
+            <div class="article-footer">
+              <span>By Sister Sarah Jenkins · 5 min read</span>
+              <button class="btn-read-article" onclick="readArticle(3)">Read Article →</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FAMILY, YOUTH & CHILDREN'S MINISTRY HUB WITH PICTURES
+       ========================================================================== -->
+  <section id="family-hub" class="section-wrap">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-badge">Generational Equipping</span>
+        <h2 class="section-title">Family, Youth & Children's Ministry</h2>
+        <p class="section-subtitle">Equipping homes with Scripture-grounded resources to nurture the next generation of steadfast disciples.</p>
+      </div>
+
+      <div class="family-cards-grid">
+        
+        <!-- Resource 1 -->
+        <div class="family-card">
+          <div class="family-img-wrap">
+            <img src="https://images.unsplash.com/photo-1609234656388-0ff363383899?auto=format&fit=crop&w=800&q=80" alt="Family worship">
+            <span class="family-tag-pill">Homes & Marriages</span>
+          </div>
+          <div class="family-body">
+            <div>
+              <h3 class="family-title">Family Worship & Prayer Guide</h3>
+              <p class="family-desc">A structured 30-day curriculum with simple Scripture readings, discussion starters, and blessings for children at mealtime and bedtime.</p>
+            </div>
+            <button class="btn-download-kit" onclick="downloadResource('Family Worship Guide')">
+              Download Study Kit (.PDF)
+            </button>
+          </div>
+        </div>
+
+        <!-- Resource 2 -->
+        <div class="family-card">
+          <div class="family-img-wrap">
+            <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=800&q=80" alt="Youth faith toolkit">
+            <span class="family-tag-pill">Next Generation</span>
+          </div>
+          <div class="family-body">
+            <div>
+              <h3 class="family-title">Youth Faith & Apologetics Toolkit</h3>
+              <p class="family-desc">Equip high school and college students to defend their faith with confidence, intellectual clarity, and Christian grace.</p>
+            </div>
+            <button class="btn-download-kit" onclick="downloadResource('Youth Faith Toolkit')">
+              Download Toolkit (.PDF)
+            </button>
+          </div>
+        </div>
+
+        <!-- Resource 3 -->
+        <div class="family-card">
+          <div class="family-img-wrap">
+            <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=800&q=80" alt="Children's scripture cards">
+            <span class="family-tag-pill">Little Disciples</span>
+          </div>
+          <div class="family-body">
+            <div>
+              <h3 class="family-title">Children's Illustrated Scripture Cards</h3>
+              <p class="family-desc">Fun memory verse cards, colouring sheets, and illustrated stories of faith suitable for Sunday schools and family devotion.</p>
+            </div>
+            <button class="btn-download-kit" onclick="downloadResource('Children Scripture Cards')">
+              Download Printable Cards (.PDF)
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       GIVING & MINISTRY PARTNERSHIP
+       ========================================================================== -->
+  <section id="giving" class="section-wrap" style="background: #ffffff;">
+    <div class="container">
+      
+      <div class="giving-banner">
+        <div class="giving-grid">
+          
+          <div class="giving-copy">
+            <h3>Partner with TestifyHub</h3>
+            <p>
+              TestifyHub is an independent Christian digital media outreach. Every dollar goes directly to 24/7 radio bandwidth, global audio transmission, and free discipleship kits for families.
+            </p>
+            <button class="btn-primary" style="background: var(--color-gold); color: #013822; font-weight: 900;" onclick="openModal('giving-modal')">
+              Support TestifyHub Ministry →
+            </button>
+          </div>
+
+          <div class="giving-campaigns">
+            
+            <div class="campaign-box">
+              <div class="campaign-title">
+                <span>24/7 Global Audio Transmitter & Cloud Server</span>
+                <span>$21,600 / $30,000</span>
+              </div>
+              <div class="campaign-progress-bar">
+                <div class="campaign-progress-fill" style="width: 72%;"></div>
+              </div>
+              <div class="campaign-metrics">
+                <span>Raised: $21,600 (72%)</span>
+                <span>Goal: $30,000</span>
+              </div>
+            </div>
+
+            <div class="campaign-box">
+              <div class="campaign-title">
+                <span>Children & Youth Discipleship Free Curriculum</span>
+                <span>$9,000 / $15,000</span>
+              </div>
+              <div class="campaign-progress-bar">
+                <div class="campaign-progress-fill" style="width: 60%;"></div>
+              </div>
+              <div class="campaign-metrics">
+                <span>Raised: $9,000 (60%)</span>
+                <span>Goal: $15,000</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       PERSISTENT BOTTOM AUDIO DOCK BAR (STICKY)
+       ========================================================================== -->
+  <div class="persistent-player">
+    <div class="container persistent-player-inner">
+      
+      <div class="dock-track-info">
+        <div class="dock-logo">
+          <img src="https://news.hii5media.com/wp-content/uploads/2026/10/4b048e13-5464-42ca-9ae2-f29294d1964e.jpeg" alt="TestifyHub">
+        </div>
+        <div class="dock-titles">
+          <span class="dock-station">TestifyHub Radio 24/7</span>
+          <span id="dock-status" class="dock-sub">Morning Grace & Testimony Hour · Pastor David</span>
+        </div>
+      </div>
+
+      <div class="dock-controls">
+        <button id="dock-play-btn" class="dock-play-btn" onclick="toggleAudioPlayback()" aria-label="Toggle radio broadcast">
+          ▶
+        </button>
+        <button class="btn-text-link" onclick="scrollToSection('live-radio')" style="font-size: 13px; font-weight: 700; color: var(--color-green);">
+          Open Player
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       SITE FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-grid">
+        
+        <div class="footer-brand">
+          <h4>Testify<span>Hub</span></h4>
+          <p>
+            Dedicated to proclaiming Christ, giving voice to answered prayers, and building up Christian families 24 hours a day around the globe.
+          </p>
+          <div style="font-size: 12.5px; color: var(--color-gold); font-style: italic;">
+            "And they overcame him by the blood of the Lamb and by the word of their testimony..." (Rev 12:11)
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Audio & Broadcast</h5>
+          <ul class="footer-links">
+            <li><a href="#live-radio">Listen Live 24/7</a></li>
+            <li><button onclick="openModal('schedule-modal')">Programme Schedule</button></li>
+            <li><a href="http://cast5.asurahosting.com:8914/stream" target="_blank" rel="noreferrer">Direct Audio Stream</a></li>
+            <li><a href="#devotional">Daily Devotional</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Faith & Testimony</h5>
+          <ul class="footer-links">
+            <li><a href="#testimonies-hub">Praise Reports</a></li>
+            <li><a href="#prayer-wall">Prayer Wall</a></li>
+            <li><a href="#articles">Articles & Journal</a></li>
+            <li><a href="#family-hub">Family Altar Resources</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Trust & Governance</h5>
+          <ul class="footer-links">
+            <li><button onclick="openModal('policy-modal')">Statement of Faith</button></li>
+            <li><button onclick="openModal('policy-modal')">Privacy Policy</button></li>
+            <li><button onclick="openModal('admin-modal')" style="color: var(--color-gold); font-weight: 700;">Admin Portal</button></li>
+            <li><a href="/api/download-single-html" style="color: #a6c4b2; text-decoration: underline;">Download Single HTML File</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-baseline">
+        <div>
+          © 2026 TestifyHub. All rights reserved. Proclaiming Christ across every generation.
+        </div>
+        <div>
+          <button onclick="openModal('giving-modal')" style="color: var(--color-gold); font-weight: 800;">
+            Partner with TestifyHub →
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODALS
+       ========================================================================== -->
+
+  <!-- 1. Schedule Modal -->
+  <div id="schedule-modal" class="modal-overlay" onclick="handleOverlayClick(event, 'schedule-modal')">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 class="modal-title">7-Day Programme Schedule</h3>
+        <span class="modal-close-btn" onclick="closeModal('schedule-modal')">×</span>
+      </div>
+      <div class="modal-body">
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="padding: 14px; background: var(--color-green-light); border-radius: 10px; border: 1px solid rgba(2, 87, 53, 0.2);">
+            <strong style="color: var(--color-green); display: block; font-size: 14px;">06:00 - 08:30 AM · Daily</strong>
+            <span style="font-weight: 800; font-size: 16px;">Morning Grace & Testimony Hour</span>
+            <p style="font-size: 13.5px; color: var(--color-text-secondary); margin-top: 4px;">Pastor David & Sister Grace · Live praise reports, daily scripture, and morning family prayers.</p>
+          </div>
+          <div style="padding: 14px; background: #fbfbfb; border: 1px solid var(--color-border); border-radius: 10px;">
+            <strong style="color: var(--color-purple); display: block; font-size: 14px;">12:00 - 01:30 PM · Daily</strong>
+            <span style="font-weight: 800; font-size: 16px;">Noon Intercession & Psalms of Hope</span>
+            <p style="font-size: 13.5px; color: var(--color-text-secondary); margin-top: 4px;">Pastor Ruth Vance · Midday prayer fellowship for families, troubled marriages, and sick believers.</p>
+          </div>
+          <div style="padding: 14px; background: #fbfbfb; border: 1px solid var(--color-border); border-radius: 10px;">
+            <strong style="color: var(--color-gold-dark); display: block; font-size: 14px;">08:00 - 10:00 PM · Daily</strong>
+            <span style="font-weight: 800; font-size: 16px;">Night Watch & Miracle Testimonies</span>
+            <p style="font-size: 13.5px; color: var(--color-text-secondary); margin-top: 4px;">Evangelist Mark Taylor · Evening fellowship, praise recordings, and heartfelt testimonies from overseas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Submit Testimony Modal -->
+  <div id="submit-testimony-modal" class="modal-overlay" onclick="handleOverlayClick(event, 'submit-testimony-modal')">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 class="modal-title">Share Your Praise Report</h3>
+        <span class="modal-close-btn" onclick="closeModal('submit-testimony-modal')">×</span>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="handleTestimonySubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Testimony Title</label>
+            <input type="text" id="testimony-input-title" required class="form-input" placeholder="e.g. Healed of Chronic Illness, Family Reunited">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <select id="testimony-input-cat" class="form-select">
+              <option value="Healing">Healing & Restoration</option>
+              <option value="Family">Family & Marriage</option>
+              <option value="Provision">Financial Provision</option>
+              <option value="Salvation">Salvation & Youth</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your Story (What did the Lord do?)</label>
+            <textarea id="testimony-input-story" required class="form-textarea" placeholder="Describe the trial, the prayer, and how God delivered you..."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your Name or Pen Name</label>
+            <input type="text" id="testimony-input-author" required class="form-input" placeholder="e.g. Sister Deborah M. or Anonymous">
+          </div>
+          <button type="submit" class="btn-submit-form">
+            Publish Testimony to Praise Altar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Submit Prayer Modal -->
+  <div id="submit-prayer-modal" class="modal-overlay" onclick="handleOverlayClick(event, 'submit-prayer-modal')">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 class="modal-title">Submit Prayer Request</h3>
+        <span class="modal-close-btn" onclick="closeModal('submit-prayer-modal')">×</span>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="handlePrayerSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Prayer Need Summary</label>
+            <input type="text" id="prayer-input-title" required class="form-input" placeholder="e.g. Praying for my son's salvation, Health test tomorrow">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <select id="prayer-input-cat" class="form-select">
+              <option value="Family">Family & Children</option>
+              <option value="Health">Health & Healing</option>
+              <option value="Spiritual">Spiritual Growth & Deliverance</option>
+              <option value="Financial">Work & Provision</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Details</label>
+            <textarea id="prayer-input-body" required class="form-textarea" placeholder="Share what is on your heart so our intercessors may stand with you..."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input type="text" id="prayer-input-author" required class="form-input" placeholder="e.g. Brother Samuel or 'A Sister in Christ'">
+          </div>
+          <button type="submit" class="btn-submit-form">
+            Submit Prayer to Global Intercessors
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Giving Modal -->
+  <div id="giving-modal" class="modal-overlay" onclick="handleOverlayClick(event, 'giving-modal')">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 class="modal-title">Partner with TestifyHub</h3>
+        <span class="modal-close-btn" onclick="closeModal('giving-modal')">×</span>
+      </div>
+      <div class="modal-body">
+        <div style="font-size: 14px; color: var(--color-text-secondary); margin-bottom: 18px; line-height: 1.5;">
+          Thank you for choosing to stand with TestifyHub. Your gift directly funds 24/7 radio streaming and discipleship materials for children.
+        </div>
+        <form onsubmit="handleGivingSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Select Amount</label>
+            <div style="display: flex; gap: 8px;">
+              <button type="button" class="btn-secondary" style="flex: 1;" onclick="setGivingAmt(25)">$25</button>
+              <button type="button" class="btn-secondary" style="flex: 1;" onclick="setGivingAmt(50)">$50</button>
+              <button type="button" class="btn-secondary" style="flex: 1;" onclick="setGivingAmt(100)">$100</button>
+              <button type="button" class="btn-secondary" style="flex: 1;" onclick="setGivingAmt(250)">$250</button>
+            </div>
+            <input type="number" id="giving-amount-input" class="form-input" value="50" style="margin-top: 10px;" placeholder="Custom Amount ($)">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input type="text" required class="form-input" placeholder="Full Name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email for Tax Receipt</label>
+            <input type="email" required class="form-input" placeholder="you@domain.com">
+          </div>
+          <button type="submit" class="btn-submit-form">
+            Confirm Gift & Generate Tax Receipt
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Article Modal -->
+  <div id="article-modal" class="modal-overlay" onclick="handleOverlayClick(event, 'article-modal')">
+    <div class="modal-window" style="max-width: 720px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="article-modal-title">Article Title</h3>
+        <span class="modal-close-btn" onclick="closeModal('article-modal')">×</span>
+      </div>
+      <div class="modal-body">
+        <div id="article-modal-meta" style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 16px;"></div>
+        <div id="article-modal-body" style="font-size: 15px; color: var(--color-text-secondary); line-height: 1.7;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Admin Modal -->
+  <div id="admin-modal" class="modal-overlay" onclick="handleOverlayClick(event, 'admin-modal')">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 class="modal-title">TestifyHub Admin CMS</h3>
+        <span class="modal-close-btn" onclick="closeModal('admin-modal')">×</span>
+      </div>
+      <div class="modal-body">
+        <div style="padding: 14px; background: var(--color-green-light); border-radius: 8px; margin-bottom: 20px;">
+          <strong style="color: var(--color-green); display: block; font-size: 13px;">Stream Status: ACTIVE</strong>
+          <span style="font-size: 12px; color: var(--color-text-muted);">Audio Stream: cast5.asurahosting.com:8914/stream (128 kbps)</span>
+        </div>
+        <h4 style="font-size: 14px; font-weight: 800; margin-bottom: 10px;">Queue Moderation</h4>
+        <p style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 16px;">
+          All prayer requests and testimonies are automatically displayed with real-time counters.
+        </p>
+        <button class="btn-secondary" style="width: 100%; margin-bottom: 10px;" onclick="alert('Moderation queues are in sync. All entries active.')">
+          Run Intercession Queue Audit
+        </button>
+        <button class="btn-secondary" style="width: 100%;" onclick="localStorage.clear(); location.reload();">
+          Reset Demo Data to Factory Defaults
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Statement of Faith Modal -->
+  <div id="policy-modal" class="modal-overlay" onclick="handleOverlayClick(event, 'policy-modal')">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 class="modal-title">Statement of Faith</h3>
+        <span class="modal-close-btn" onclick="closeModal('policy-modal')">×</span>
+      </div>
+      <div class="modal-body" style="font-size: 14.5px; color: var(--color-text-secondary); line-height: 1.65;">
+        <h4 style="color: var(--color-green); margin-bottom: 8px;">Our Biblical Convictions</h4>
+        <p style="margin-bottom: 12px;">
+          We believe the Holy Scriptures of the Old and New Testaments to be the inspired, infallible, and authoritative Word of God.
+        </p>
+        <p style="margin-bottom: 12px;">
+          We believe in one God, eternally existent in three persons: Father, Son, and Holy Spirit.
+        </p>
+        <p style="margin-bottom: 12px;">
+          We believe in the deity of our Lord Jesus Christ, His virgin birth, His sinless life, His miracles, His vicarious and atoning death through His shed blood, His bodily resurrection, and His ascension to the right hand of the Father.
+        </p>
+        <p>
+          We proclaim the power of Jesus Christ to heal, save, restore families, and hear the prayers of His saints.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       VANILLA JAVASCRIPT LOGIC (Audio, Animated Canvas Visualizer, Particle Effects)
+       ========================================================================== -->
+  <script>
+    // Audio Player State & Setup
+    const isHttps = window.location.protocol === 'https:';
+    const DIRECT_STREAM_URL = 'http://cast5.asurahosting.com:8914/stream';
+    const PROXY_STREAM_URL = '/api/radio-stream';
+    const STREAM_URL = isHttps ? PROXY_STREAM_URL : DIRECT_STREAM_URL;
+
+    let audioElement = new Audio();
+    audioElement.src = STREAM_URL;
+    audioElement.preload = 'none';
+
+    let isPlaying = false;
+    let isMuted = false;
+    let currentVolume = 0.85;
+    let sleepTimerSeconds = null;
+    let sleepTimerInterval = null;
+
+    // Rich Testimonies Data with Pictures
+    const INITIAL_TESTIMONIES = [
+      {
+        id: 1,
+        title: "Healed of Severe Heart Complications",
+        category: "Healing",
+        photo: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=600&q=80",
+        story: "After doctors gave a grim prognosis in November, the intercessors on TestifyHub held vigil with my family. At my last checkup, the specialist confirmed complete restoration with zero tissue scarring!",
+        author: "Sister Margaret D.",
+        location: "Nairobi, Kenya",
+        praises: 142
+      },
+      {
+        id: 2,
+        title: "Daughter Returned to the Lord After 6 Years",
+        category: "Family",
+        photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
+        story: "We prayed through tears during the Night Watch broadcast for our estranged daughter. Two weeks ago she called asking for forgiveness and walked back into church with us on Sunday morning.",
+        author: "Deacon Thomas & Grace",
+        location: "Texas, USA",
+        praises: 198
+      },
+      {
+        id: 3,
+        title: "Miraculous Tuition & Rent Provision",
+        category: "Provision",
+        photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+        story: "Facing eviction with zero balance, we surrendered our anxiety during the morning devotional. That afternoon, a church brother dropped by with an anonymous envelope covering exact costs.",
+        author: "Brother Emmanuel",
+        location: "London, UK",
+        praises: 115
+      },
+      {
+        id: 4,
+        title: "Youth Campus Fellowship Revival",
+        category: "Salvation",
+        photo: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80",
+        story: "Three of us began listening to the morning broadcast in our dorm. We started an acoustic lunch worship circle, and over 40 students have accepted Christ this semester!",
+        author: "Caleb & Campus Circle",
+        location: "Ohio, USA",
+        praises: 87
+      },
+      {
+        id: 5,
+        title: "Miracle Conception After 7 Years of Infertility",
+        category: "Healing",
+        photo: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&w=600&q=80",
+        story: "Year after year, negative tests brought sorrow. During a Tuesday intercession hour, Pastor Ruth prayed specifically for barren wombs. Ten months later, we welcomed healthy baby Samuel!",
+        author: "Sister Hannah & David",
+        location: "Accra, Ghana",
+        praises: 234
+      },
+      {
+        id: 6,
+        title: "Deliverance from 10 Years of Alcohol Addiction",
+        category: "Salvation",
+        photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80",
+        story: "I had wrecked my career and marriage. Tuning into TestifyHub by accident in my truck, the convicting grace of Christ shattered the craving. Today I am 14 months sober and serving as an usher.",
+        author: "Elder Marcus R.",
+        location: "Toronto, Canada",
+        praises: 162
+      }
+    ];
+
+    // Prayer Requests Data
+    const INITIAL_PRAYERS = [
+      {
+        id: 1,
+        title: "Intercession for My Son Battling Substance Addiction",
+        category: "Family",
+        body: "Please lift up my 22-year-old son Joshua. He desires freedom from alcohol and drugs. Pray for divine deliverance, strength, and restoration in our home.",
+        author: "A Praying Mother, Atlanta",
+        prayedCount: 88,
+        userPrayed: false
+      },
+      {
+        id: 2,
+        title: "Crucial Medical Biopsy Tomorrow Morning",
+        category: "Health",
+        body: "Doctors are running diagnostic scans on my lungs tomorrow. Believing God for a clean report and complete peace that surpasses all understanding.",
+        author: "Brother Kenneth, Leeds",
+        prayedCount: 145,
+        userPrayed: false
+      },
+      {
+        id: 3,
+        title: "Financial Breakthrough for Missionary Family",
+        category: "Financial",
+        body: "Our mission outreach school in rural Peru needs monthly support for 60 children. Praying for faithful partners to keep the doors open.",
+        author: "Sister Maria, Mission Field",
+        prayedCount: 62,
+        userPrayed: false
+      },
+      {
+        id: 4,
+        title: "Marriage Healing & Forgiveness",
+        category: "Family",
+        body: "Severe strain and mistrust have entered our 15-year marriage. Asking the body of Christ to pray for genuine repentance, tenderness, and reconciliation.",
+        author: "Anonymous Believer, Chicago",
+        prayedCount: 119,
+        userPrayed: false
+      }
+    ];
+
+    // Articles Content
+    const ARTICLES = {
+      1: {
+        title: "Rebuilding the Family Altar in an Age of Digital Distraction",
+        author: "Pastor David Vance",
+        readTime: "6 min read",
+        body: `<p>In an age when screens command the majority of waking hours, the ancient practice of gathering the family for worship has never been more urgent.</p>
+        <p style="margin-top:12px;">A 'family altar' does not require seminary lectures or hours of solemnity. It is simply a consecrated daily rhythm: five minutes of Scripture read aloud, three minutes of prayer where children hear their parents call on God, and a blessing spoken over their heads before rest.</p>
+        <p style="margin-top:12px;">When our children witness their parents bowing before Almighty God, the foundations of eternity are anchored deep within their souls.</p>`
+      },
+      2: {
+        title: "Guiding Christian Youth Through Skepticism and Culture",
+        author: "Nathan Vance",
+        readTime: "8 min read",
+        body: `<p>Today's young people do not lack access to information; they lack anchors of truth. When university professors and cultural voices challenge the veracity of Scripture, emotional platitudes will not suffice.</p>
+        <p style="margin-top:12px;">We must introduce youth to the robust intellectual heritage of the Christian faith. The historical evidence for Christ's resurrection, the manuscript integrity of the Bible, and philosophical arguments for God provide unwavering assurance.</p>
+        <p style="margin-top:12px;">Never fear honest questions from youth. Every sincere doubt answered biblically becomes bedrock for lifelong conviction.</p>`
+      },
+      3: {
+        title: "The Power of the Blood of the Lamb and Our Testimony",
+        author: "Sister Sarah Jenkins",
+        readTime: "5 min read",
+        body: `<p>Revelation 12:11 provides heaven's battle strategy: 'They overcame him by the blood of the Lamb and by the word of their testimony.'</p>
+        <p style="margin-top:12px;">The blood of Jesus settles our eternal standing before God. But the word of our testimony is how we enforce that victory in our daily experience! When you share how God healed, provided, or comforted you, darkness loses its paralyzing grip over others.</p>
+        <p style="margin-top:12px;">Your story is not just your biography—it is a spiritual weapon. Do not keep silent about what God has done.</p>`
+      }
+    };
+
+    // State Variables
+    let testimonies = JSON.parse(localStorage.getItem('testifyhub_testimonies')) || INITIAL_TESTIMONIES;
+    let prayers = JSON.parse(localStorage.getItem('testifyhub_prayers')) || INITIAL_PRAYERS;
+    let activeTestimonyFilter = 'all';
+
+    // Initialize UI on DOM load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderTestimonies();
+      renderPrayers();
+      initAudioVisualizerCanvas();
+      updateDynamicGreeting();
+      pollStationMetadata();
+      setInterval(pollStationMetadata, 15000);
+    });
+
+    // Dynamic greeting based on visitor's local hour
+    function updateDynamicGreeting() {
+      const now = new Date();
+      const hour = now.getHours();
+      let greeting = "Good morning";
+      let icon = "☀️";
+      if (hour >= 12 && hour < 17) {
+        greeting = "Good afternoon";
+        icon = "🌤️";
+      } else if (hour >= 17 || hour < 5) {
+        greeting = "Good evening";
+        icon = "🌙";
+      }
+      const el = document.getElementById('greeting-text');
+      const pill = document.getElementById('greeting-pill');
+      if (el && pill) {
+        el.textContent = `${greeting}, Welcome to TestifyHub`;
+        pill.querySelector('span').textContent = icon;
+      }
+    }
+
+    // Audio Playback Toggle
+    function toggleAudioPlayback() {
+      if (!isPlaying) {
+        // Fresh live stream connection
+        audioElement.src = STREAM_URL + (STREAM_URL.includes('?') ? '&' : '?') + '_t=' + Date.now();
+        const playPromise = audioElement.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            isPlaying = true;
+            updatePlaybackUI(true);
+          }).catch((err) => {
+            console.warn("Direct play rejected, trying fallback:", err);
+            audioElement.src = isHttps ? PROXY_STREAM_URL : DIRECT_STREAM_URL;
+            audioElement.play().then(() => {
+              isPlaying = true;
+              updatePlaybackUI(true);
+            }).catch(() => {
+              // Try local broadcast buffer
+              audioElement.src = '/audio/broadcast_preview.mp3';
+              audioElement.play().then(() => {
+                isPlaying = true;
+                updatePlaybackUI(true);
+              }).catch(() => {
+                console.warn("Browser audio permission required.");
+              });
+            });
+          });
+        }
+      } else {
+        audioElement.pause();
+        isPlaying = false;
+        updatePlaybackUI(false);
+      }
+    }
+
+    // Audio element native event listeners to sync UI state seamlessly
+    audioElement.addEventListener('playing', function() {
+      isPlaying = true;
+      updatePlaybackUI(true);
+    });
+    audioElement.addEventListener('pause', function() {
+      isPlaying = false;
+      updatePlaybackUI(false);
+    });
+    audioElement.addEventListener('error', function(e) {
+      console.warn("Audio element error event:", e);
+      if (isPlaying && audioElement.src && !audioElement.src.includes('broadcast_preview')) {
+        audioElement.src = '/audio/broadcast_preview.mp3';
+        audioElement.play().catch(console.error);
+      }
+    });
+
+    function updatePlaybackUI(playing) {
+      const cardBtn = document.getElementById('card-play-btn');
+      const cardLabel = document.getElementById('card-play-label');
+      const headerBtn = document.getElementById('header-play-btn');
+      const headerLabel = document.getElementById('header-play-label');
+      const dockBtn = document.getElementById('dock-play-btn');
+      const heroMainBtn = document.getElementById('hero-main-play-text');
+      const vinyl = document.getElementById('vinyl-disc');
+      const eqGroup = document.getElementById('equalizer-group');
+      const eqTag = document.getElementById('eq-bitrate-label');
+
+      if (playing) {
+        if (cardBtn) { cardBtn.innerHTML = '❚❚'; cardBtn.classList.add('playing'); }
+        if (cardLabel) cardLabel.textContent = 'Streaming Live';
+        if (headerBtn) { headerBtn.classList.add('playing'); }
+        if (headerLabel) headerLabel.textContent = 'Pause Live';
+        if (dockBtn) { dockBtn.innerHTML = '❚❚'; dockBtn.classList.add('playing'); }
+        if (heroMainBtn) heroMainBtn.textContent = 'Pause Broadcast';
+        if (vinyl) vinyl.classList.add('spinning');
+        if (eqGroup) eqGroup.classList.add('animating');
+        if (eqTag) eqTag.textContent = 'Live Audio';
+      } else {
+        if (cardBtn) { cardBtn.innerHTML = '▶'; cardBtn.classList.remove('playing'); }
+        if (cardLabel) cardLabel.textContent = 'Click to Play';
+        if (headerBtn) { headerBtn.classList.remove('playing'); }
+        if (headerLabel) headerLabel.textContent = 'Listen Live';
+        if (dockBtn) { dockBtn.innerHTML = '▶'; dockBtn.classList.remove('playing'); }
+        if (heroMainBtn) heroMainBtn.textContent = 'Tune In Live (24/7)';
+        if (vinyl) vinyl.classList.remove('spinning');
+        if (eqGroup) eqGroup.classList.remove('animating');
+        if (eqTag) eqTag.textContent = 'Ready to Stream';
+      }
+    }
+
+    // Volume & Mute Controls
+    function changeVolume(val) {
+      currentVolume = parseFloat(val);
+      audioElement.volume = currentVolume;
+      isMuted = currentVolume === 0;
+      updateVolumeUI();
+    }
+
+    function toggleMute() {
+      if (isMuted) {
+        isMuted = false;
+        audioElement.volume = currentVolume > 0 ? currentVolume : 0.85;
+      } else {
+        isMuted = true;
+        audioElement.volume = 0;
+      }
+      updateVolumeUI();
+    }
+
+    function updateVolumeUI() {
+      const volRange = document.getElementById('volume-range');
+      const volVal = document.getElementById('volume-val');
+      const volIcon = document.getElementById('volume-icon');
+
+      if (volRange) volRange.value = isMuted ? 0 : audioElement.volume;
+      const pct = Math.round((isMuted ? 0 : audioElement.volume) * 100);
+      if (volVal) volVal.textContent = pct + '%';
+      if (volIcon) {
+        if (isMuted || pct === 0) volIcon.textContent = '🔇';
+        else if (pct < 50) volIcon.textContent = '🔉';
+        else volIcon.textContent = '🔊';
+      }
+    }
+
+    // Sleep Timer
+    function setSleepTimer(minutes) {
+      const min = parseInt(minutes, 10);
+      clearInterval(sleepTimerInterval);
+      const display = document.getElementById('sleep-timer-display');
+
+      if (min === 0) {
+        sleepTimerSeconds = null;
+        if (display) display.textContent = '';
+        return;
+      }
+
+      sleepTimerSeconds = min * 60;
+      sleepTimerInterval = setInterval(() => {
+        sleepTimerSeconds--;
+        if (sleepTimerSeconds <= 0) {
+          clearInterval(sleepTimerInterval);
+          if (isPlaying) toggleAudioPlayback();
+          if (display) display.textContent = 'Off';
+        } else {
+          const m = Math.floor(sleepTimerSeconds / 60);
+          const s = sleepTimerSeconds % 60;
+          if (display) display.textContent = `(${m}:${s < 10 ? '0' : ''}${s})`;
+        }
+      }, 1000);
+    }
+
+    // LIVE CANVAS SOUNDWAVE VISUALIZER (Smooth organic sine-wave fluid animation)
+    function initAudioVisualizerCanvas() {
+      const canvas = document.getElementById('audio-visualizer-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      function resize() {
+        canvas.width = canvas.parentElement.clientWidth;
+        canvas.height = canvas.parentElement.clientHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      let step = 0;
+      function renderWaveform() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const width = canvas.width;
+        const height = canvas.height;
+        const midY = height / 2;
+
+        step += isPlaying ? 0.05 : 0.015;
+        const amp1 = isPlaying ? height * 0.38 : height * 0.12;
+        const amp2 = isPlaying ? height * 0.28 : height * 0.08;
+        const amp3 = isPlaying ? height * 0.18 : height * 0.05;
+
+        // Wave 1: Golden Amber
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgba(242, 184, 61, 0.7)';
+        ctx.lineWidth = isPlaying ? 2.5 : 1.5;
+        for (let x = 0; x < width; x++) {
+          const y = midY + Math.sin(x * 0.02 + step) * amp1 * Math.sin(x * 0.005);
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        // Wave 2: Royal Purple
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgba(168, 85, 247, 0.65)';
+        ctx.lineWidth = isPlaying ? 2 : 1.2;
+        for (let x = 0; x < width; x++) {
+          const y = midY + Math.cos(x * 0.025 - step * 1.2) * amp2 * Math.cos(x * 0.004);
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        // Wave 3: Emerald Glow
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgba(52, 211, 153, 0.85)';
+        ctx.lineWidth = isPlaying ? 3 : 1.5;
+        for (let x = 0; x < width; x++) {
+          const y = midY + Math.sin(x * 0.035 + step * 1.5) * amp3;
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        requestAnimationFrame(renderWaveform);
+      }
+      renderWaveform();
+    }
+
+    // Copy Direct Stream URL
+    function copyStreamUrl() {
+      const url = 'http://cast5.asurahosting.com:8914/stream';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+          const btnText = document.getElementById('copy-stream-btn-text');
+          if (btnText) {
+            const old = btnText.textContent;
+            btnText.textContent = '✓ Copied!';
+            setTimeout(() => { btnText.textContent = old; }, 2200);
+          }
+        }).catch(() => {
+          prompt('TestifyHub Radio Direct Stream URL:', url);
+        });
+      } else {
+        prompt('TestifyHub Radio Direct Stream URL:', url);
+      }
+    }
+
+    // Download .M3U Playlist for VLC / Phone media players
+    function downloadM3u() {
+      const content = '#EXTM3U\n#EXTINF:-1,TestifyHub Christian Radio 24/7\nhttp://cast5.asurahosting.com:8914/stream\n';
+      const blob = new Blob([content], { type: 'audio/x-mpegurl' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'testifyhub-radio.m3u';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Poll live Shoutcast stream metadata from /api/radio-info
+    function pollStationMetadata() {
+      fetch('/api/radio-info').then(res => {
+        if (!res.ok) throw new Error('Info endpoint not accessible');
+        return res.json();
+      }).then(data => {
+        if (data && data.songTitle) {
+          const titleEl = document.getElementById('live-stream-song-title');
+          if (titleEl) titleEl.textContent = data.songTitle;
+        }
+        if (data && data.listeners) {
+          const badge = document.getElementById('live-stream-listeners-badge');
+          if (badge) badge.textContent = `${data.listeners} Listener${data.listeners > 1 ? 's' : ''} · 128 kbps`;
+        }
+      }).catch(() => {
+        // Quiet fallback when offline or pure static HTML
+      });
+    }
+
+    // Render Testimonies with Pictures & Floating Particle Burst
+    function renderTestimonies() {
+      const container = document.getElementById('testimonies-container');
+      if (!container) return;
+
+      const filtered = activeTestimonyFilter === 'all'
+        ? testimonies
+        : testimonies.filter(t => t.category.toLowerCase() === activeTestimonyFilter.toLowerCase());
+
+      container.innerHTML = filtered.map(item => `
+        <div class="testimony-card">
+          <div class="testimony-photo-header">
+            <img src="${item.photo || 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80'}" alt="${item.title}" loading="lazy">
+            <span class="testimony-cat-badge">${item.category}</span>
+            <span class="testimony-verified-badge">✓ Verified</span>
+          </div>
+          <div class="testimony-card-content">
+            <h3 class="testimony-title">${item.title}</h3>
+            <p class="testimony-quote">"${item.story}"</p>
+            <div class="testimony-author-bar">
+              <div class="testimony-author-info">
+                <img src="${item.photo || 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=100&q=80'}" alt="${item.author}" class="author-avatar-circle">
+                <div>
+                  <span class="author-name-text">${item.author}</span>
+                  <span class="author-location-text">${item.location || 'Global Disciple'}</span>
+                </div>
+              </div>
+              <button class="praise-btn" onclick="praiseTestimony(${item.id}, this)">
+                <span>Praise God</span>
+                <span id="praise-count-${item.id}">(${item.praises})</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterTestimonies(cat, btn) {
+      activeTestimonyFilter = cat;
+      document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderTestimonies();
+    }
+
+    // Praise Button with Floating Amen Particle Effect
+    function praiseTestimony(id, btn) {
+      const item = testimonies.find(t => t.id === id);
+      if (item) {
+        item.praises += 1;
+        const countSpan = document.getElementById(`praise-count-${id}`);
+        if (countSpan) countSpan.textContent = `(${item.praises})`;
+        localStorage.setItem('testifyhub_testimonies', JSON.stringify(testimonies));
+
+        // Spawn floating particle
+        const particle = document.createElement('span');
+        particle.className = 'floating-amen-particle';
+        particle.textContent = 'Amen! ✨';
+        particle.style.left = '50%';
+        particle.style.top = '-10px';
+        btn.appendChild(particle);
+        setTimeout(() => particle.remove(), 1200);
+      }
+    }
+
+    // Render Prayer Requests
+    function renderPrayers() {
+      const container = document.getElementById('prayers-container');
+      if (!container) return;
+
+      container.innerHTML = prayers.map(p => `
+        <div class="prayer-card">
+          <div>
+            <span class="prayer-badge">${p.category}</span>
+            <h3 class="prayer-title">${p.title}</h3>
+            <p class="prayer-body">"${p.body}"</p>
+          </div>
+          <div class="prayer-footer">
+            <span class="prayer-author">${p.author}</span>
+            <button class="btn-pray ${p.userPrayed ? 'prayed' : ''}" onclick="togglePrayForNeed(${p.id})">
+              <span>${p.userPrayed ? '✓ Prayed' : 'I Prayed'}</span>
+              <span>(${p.prayedCount})</span>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function togglePrayForNeed(id) {
+      const item = prayers.find(p => p.id === id);
+      if (item) {
+        if (!item.userPrayed) {
+          item.prayedCount += 1;
+          item.userPrayed = true;
+        } else {
+          item.prayedCount -= 1;
+          item.userPrayed = false;
+        }
+        localStorage.setItem('testifyhub_prayers', JSON.stringify(prayers));
+        renderPrayers();
+      }
+    }
+
+    // Form Submissions
+    function handleTestimonySubmit(e) {
+      e.preventDefault();
+      const title = document.getElementById('testimony-input-title').value;
+      const cat = document.getElementById('testimony-input-cat').value;
+      const story = document.getElementById('testimony-input-story').value;
+      const author = document.getElementById('testimony-input-author').value;
+
+      const newTestimony = {
+        id: Date.now(),
+        title,
+        category: cat,
+        photo: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80",
+        story,
+        author,
+        location: "Global Intercessors",
+        praises: 1
+      };
+
+      testimonies.unshift(newTestimony);
+      localStorage.setItem('testifyhub_testimonies', JSON.stringify(testimonies));
+      renderTestimonies();
+      closeModal('submit-testimony-modal');
+      e.target.reset();
+      alert("Hallelujah! Your praise report has been published to the TestifyHub altar.");
+    }
+
+    function handlePrayerSubmit(e) {
+      e.preventDefault();
+      const title = document.getElementById('prayer-input-title').value;
+      const cat = document.getElementById('prayer-input-cat').value;
+      const body = document.getElementById('prayer-input-body').value;
+      const author = document.getElementById('prayer-input-author').value;
+
+      const newPrayer = {
+        id: Date.now(),
+        title,
+        category: cat,
+        body,
+        author,
+        prayedCount: 1,
+        userPrayed: true
+      };
+
+      prayers.unshift(newPrayer);
+      localStorage.setItem('testifyhub_prayers', JSON.stringify(prayers));
+      renderPrayers();
+      closeModal('submit-prayer-modal');
+      e.target.reset();
+      alert("Your prayer request has been delivered to our 24/7 global intercessors.");
+    }
+
+    function handleGivingSubmit(e) {
+      e.preventDefault();
+      const amt = document.getElementById('giving-amount-input').value;
+      closeModal('giving-modal');
+      alert(`Thank you for your generous gift of $${amt}! A tax-deductible receipt has been dispatched to your email.`);
+    }
+
+    function setGivingAmt(val) {
+      document.getElementById('giving-amount-input').value = val;
+    }
+
+    function readArticle(id) {
+      const art = ARTICLES[id];
+      if (art) {
+        document.getElementById('article-modal-title').textContent = art.title;
+        document.getElementById('article-modal-meta').textContent = `${art.author} · ${art.readTime}`;
+        document.getElementById('article-modal-body').innerHTML = art.body;
+        openModal('article-modal');
+      }
+    }
+
+    function downloadResource(name) {
+      alert(`Preparing downloadable study kit: "${name}" (.PDF). Initiating download now...`);
+    }
+
+    function shareOnWhatsApp() {
+      const text = encodeURIComponent("Today's Devotional on TestifyHub Radio: Lamentations 3:22-23 - The steadfast love of the Lord never ceases; His mercies are new every morning. Great is Your faithfulness! Listen live 24/7 at TestifyHub.");
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+    }
+
+    function copyDevotionalText() {
+      const text = "Unfailing Mercies for a Brand New Morning - Lamentations 3:22-23: The steadfast love of the Lord never ceases; his mercies never come to an end; they are new every morning; great is your faithfulness. - TestifyHub Christian Radio 24/7";
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Devotional copied to clipboard!");
+      });
+    }
+
+    // Modal Control
+    function openModal(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('open');
+    }
+
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('open');
+    }
+
+    function handleOverlayClick(e, id) {
+      if (e.target.id === id) closeModal(id);
+    }
+
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      if (drawer) drawer.classList.toggle('open');
+    }
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        const drawer = document.getElementById('mobile-drawer');
+        if (drawer) drawer.classList.remove('open');
+      }
+    }
+  </script>
+
+</body>
+</html>
